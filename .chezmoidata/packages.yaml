@@ -1,0 +1,54 @@
+packages:
+  arch:
+    native:
+    - bat
+    - bat-extras
+    - btop
+    - chezmoi
+    - discord
+    - docker
+    - docker-compose
+    - eza
+    - firefox
+    - flatpak
+    - fzf
+    - gdu
+    - kitty
+    - man-db
+    - man-pages
+    - nano
+    - nano-syntax-highlighting
+    - neofetch
+    - noto-fonts
+    - noto-fonts-emoji
+    - p7zip
+    - peek
+    - picom
+    - python-pillow
+    - qbittorrent
+    - ranger
+    - ripgrep
+    - rustup
+    - starship
+    - texinfo
+    - tldr
+    - tmux
+    - ttf-font-awesome
+    - ttf-jetbrains-mono-nerd
+    - ttf-opensans
+    - ufw
+    - vim
+    - virt-manager
+    - vlc
+    - wget
+    - zoxide
+    - zsh
+    - zsh-autosuggestions
+    - zsh-syntax-highlighting
+    aur:
+    - envycontrol
+    - nvm
+    - visual-studio-code-bin
+    flatpak:
+    - flathub
+    - org.godotengine.Godot

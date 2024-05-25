@@ -1,4 +1,22 @@
 #!/bin/bash
+
+PREFIX="[CHEZMOI]"
+
+if ! command -v yay &> /dev/null
+then
+    echo "$PREFIX yay could not be found, installing..."
+    cd $(mktemp -d)    
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -sic
+    cd ~
+fi
+
 {{ if eq .chezmoi.osRelease.id "endeavouros" -}}
-yay -Sy --needed firefox ufw eza btop chezmoi kitty python-pillow picom peek p7zip ranger fzf ripgrep bat bat-extras rustup nvm neofetch zsh zsh-syntax-highlighting zsh-autosuggestions starship zoxide wget vim nano nano-syntax-highlighting man-db man-pages texinfo tldr visual-studio-code-bin ttf-jetbrains-mono-nerd ttf-font-awesome ttf-opensans noto-fonts noto-fonts-emoji vlc gdu tmux discord docker docker-compose
+echo "$PREFIX Installing native packages (pacman)..."
+sudo pacman -Sy --needed {{ range .packages.arch.native -}}{{ . }} {{ end }}
+echo "$PREFIX Installing aur packages (yay)..."
+yay -Sy --needed {{ range .packages.arch.aur -}}{{ . }} {{ end }}
+echo "$PREFIX Installing flatpak packages..."
+flatpak install {{ range .packages.arch.flatpak -}}{{ . }} {{ end }}
 {{ end -}}
