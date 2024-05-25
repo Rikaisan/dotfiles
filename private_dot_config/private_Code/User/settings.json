@@ -1,0 +1,21 @@
+{
+    "security.workspace.trust.enabled": false,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "editor.fontFamily": "'JetBrainsMonoNL NF', FontAwesome, Noto Sans, 'monospace', monospace",
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.fontSize": 12,
+    "explorer.confirmDelete": false,
+    "editor.matchBrackets": "never",
+    "editor.minimap.enabled": false,
+    "vscord.status.idle.check": false,
+    "vscord.status.idle.enabled": false,
+    "vscord.status.problems.enabled": false,
+    "vscord.status.details.text.notInFile": "Not in a file :c",
+    "vscord.status.state.idle.enabled": false,
+    "vscord.status.state.text.editing": "Working on {file_name}{file_extension}",
+    "git.autofetch": true,
+    "errorLens.enabled": true
+}
