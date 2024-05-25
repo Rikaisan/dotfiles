@@ -6,7 +6,12 @@ PREFIX="[CHEZMOI]"
 {{ if (or (eq .chezmoi.osRelease.id "arch") (.chezmoi.osRelease.idLike "arch")) -}}
 if ! command -v yay &> /dev/null
 then
-    sudo pacman -Sy --needed git 
+    if ! command -v git &> /dev/null
+    then
+        echo "$PREFIX git could not be found, installing..."
+        sudo pacman -Sy --needed --noconfirm git
+    fi
+    echo "$PREFIX yay could not be found, installing..."
     echo "$PREFIX yay could not be found, installing..."
     cd $(mktemp -d)    
     git clone https://aur.archlinux.org/yay.git
