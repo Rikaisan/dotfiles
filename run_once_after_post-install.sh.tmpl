@@ -1,0 +1,20 @@
+#!/bin/bash
+
+PREFIX="[CHEZMOI]"
+
+# Install Rust
+echo "$PREFIX Setting up Rust..."
+rustup default stable
+
+{{ if eq .chezmoi.osRelease.id "endeavouros" }}
+read -p "Do you want to run nvidia-inst?[y/N] " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo "$PREFIX Setting up NVIDIA..."
+    nvidia-inst
+fi
+{{ end }}
+
+echo "$PREFIX Setting up virt-manager..."
+sudo systemctl enable libvirtd.socket --now
