@@ -2,8 +2,11 @@
 
 PREFIX="[CHEZMOI]"
 
+
+{{ if (or (eq .chezmoi.osRelease.id "arch") (.chezmoi.osRelease.idLike "arch")) -}}
 if ! command -v yay &> /dev/null
 then
+    sudo pacman -Sy --needed git 
     echo "$PREFIX yay could not be found, installing..."
     cd $(mktemp -d)    
     git clone https://aur.archlinux.org/yay.git
@@ -12,11 +15,18 @@ then
     cd ~
 fi
 
-{{ if eq .chezmoi.osRelease.id "endeavouros" -}}
+echo "$PREFIX Configuring yay..."
+yay --save --answerdiff None --answerclean None --removemake
+
 echo "$PREFIX Installing native packages (pacman)..."
-sudo pacman -Sy --needed {{ range .packages.arch.native -}}{{ . }} {{ end }}
+sudo pacman -Sy --needed --noconfirm {{ range .packages.arch.native -}}{{ . }} {{ end }}
 echo "$PREFIX Installing aur packages (yay)..."
-yay -Sy --needed {{ range .packages.arch.aur -}}{{ . }} {{ end }}
+yay -Sy --noconfirm --needed {{ range .packages.arch.aur -}}{{ . }} {{ end }}
 echo "$PREFIX Installing flatpak packages..."
-flatpak install {{ range .packages.arch.flatpak -}}{{ . }} {{ end }}
+flatpak install flathub {{ range .packages.arch.flatpak -}}{{ . }} {{ end }}-y
+
+{{ if eq .chezmoi.osRelease.id "endeavouros" }}
+echo "$PREFIX Installing EndeavourOS specific packages (yay)..."
+yay -Sy --noconfirm --needed {{ range .packages.arch.endeavouros -}}{{ . }} {{ end }}
+{{ end }}
 {{ end -}}

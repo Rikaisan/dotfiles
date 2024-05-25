@@ -38,7 +38,6 @@ packages:
     - ttf-opensans
     - ufw
     - vim
-    - virt-manager
     - vlc
     - wget
     - zoxide
@@ -46,9 +45,10 @@ packages:
     - zsh-autosuggestions
     - zsh-syntax-highlighting
     aur:
-    - envycontrol
     - nvm
     - visual-studio-code-bin
+    endeavouros:
+    - envycontrol
     flatpak:
-    - flathub
     - org.godotengine.Godot
+    - org.gnome.Boxes

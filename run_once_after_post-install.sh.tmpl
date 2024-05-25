@@ -14,7 +14,12 @@ then
     echo "$PREFIX Setting up NVIDIA..."
     nvidia-inst
 fi
-{{ end }}
 
-echo "$PREFIX Setting up virt-manager..."
-sudo systemctl enable libvirtd.socket --now
+read -p "Do you want to change envycontrol mode to nvidia?[y/N] " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo "$PREFIX Switching up to NVIDIA..."
+    sudo envycontrol -s nvidia
+fi
+{{ end }}
