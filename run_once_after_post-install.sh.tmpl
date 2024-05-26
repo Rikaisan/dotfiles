@@ -10,6 +10,7 @@ rustup default stable
 echo "$PREFIX Configuring Docker..."
 sudo groupadd docker
 sudo usermod -aG docker {{ .chezmoi.username }}
+sudo systemctl enable docker --now
 
 {{ if eq .chezmoi.osRelease.id "endeavouros" }}
 read -p "Do you want to run nvidia-inst?[y/N] " -n 1 -r
