@@ -1,0 +1,7 @@
+README.md
+{{- if ne .local-env.desktop "plasma" }}
+private_dot_config/private_kglobalshortcutsrc
+{{- end }}
+{{- if ne .local-env.desktop "hyprland" }}
+.hyprland
+{{- end }}
