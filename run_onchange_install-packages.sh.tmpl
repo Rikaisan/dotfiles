@@ -28,8 +28,8 @@ if [ ! -f $HOME/.config/yay/config.json ]; then
 fi
 
 # Packages!
-echo "$PREFIX Updating repos..."
-yay -Sy
+echo "$PREFIX Updating packages..."
+yay -Syu
 
 # Save variables to not lose them in range scope
 {{ $packages := .packages.arch -}}
