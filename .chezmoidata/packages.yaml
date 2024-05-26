@@ -45,8 +45,6 @@ packages:
       - zsh
       - zsh-autosuggestions
       - zsh-syntax-highlighting
-      endeavouros:
-      - envycontrol
     extra:
       aur:
       - octopi
@@ -67,3 +65,6 @@ packages:
       - steam
       aur:
       - prismlauncher-qt5-bin
+    nvidia:
+      aur:
+      - envycontrol

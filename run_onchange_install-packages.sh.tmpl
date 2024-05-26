@@ -35,8 +35,9 @@ yay -Syu
 {{ $packages := .packages.arch -}}
 {{ $releaseId := .chezmoi.osRelease.id -}}
 # Categories need to be added manually to guarantee correct order
-{{ $categories := (list "essential" "extra" "development" "gaming") -}}
+{{ $categories := (list "essential" "extra" "development" "gaming" "nvidia") -}}
 {{ range $category := $categories -}}
+{{ if (get $packages $category) -}}
 echo "---------- Start {{ $category }} install ----------"
 echo
 echo "[{{ title $category }} packages]
@@ -65,5 +66,6 @@ then
     {{ end -}}
 fi
 echo "---------- End {{ $category }} install ----------"
-{{ end }}
+{{ end -}}
+{{ end -}}
 {{ end -}}
