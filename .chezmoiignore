@@ -1,7 +1,7 @@
 README.md
-{{- if ne .local-env.desktop "plasma" }}
+{{- if ne .localEnv.desktop "plasma" }}
 private_dot_config/private_kglobalshortcutsrc
 {{- end }}
-{{- if ne .local-env.desktop "hyprland" }}
+{{- if ne .localEnv.desktop "hyprland" }}
 .hyprland
 {{- end }}
