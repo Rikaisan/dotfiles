@@ -6,6 +6,11 @@ PREFIX="[CHEZMOI]"
 echo "$PREFIX Setting up Rust..."
 rustup default stable
 
+# Setup no-root docker
+echo "$PREFIX Configuring Docker..."
+sudo groupadd docker
+sudo usermod -aG docker {{ .chezmoi.username }}
+
 {{ if eq .chezmoi.osRelease.id "endeavouros" }}
 read -p "Do you want to run nvidia-inst?[y/N] " -n 1 -r
 echo    # (optional) move to a new line
