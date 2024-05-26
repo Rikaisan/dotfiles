@@ -1,6 +1,7 @@
 packages:
   arch:
     essential:
+      default: true
       native:
       - bat
       - bat-extras
@@ -46,11 +47,13 @@ packages:
       - zsh-autosuggestions
       - zsh-syntax-highlighting
     extra:
+      default: false
       aur:
       - octopi
       flatpak:
       - org.gnome.Boxes
     development:
+      default: true
       native:
       - docker
       - docker-compose
@@ -60,11 +63,13 @@ packages:
       flatpak:
       - org.godotengine.Godot
     gaming:
+      default: false
       native:
       - discord
       - steam
       aur:
       - prismlauncher-qt5-bin
     nvidia:
+      default: false
       aur:
       - envycontrol

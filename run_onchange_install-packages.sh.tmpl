@@ -42,9 +42,15 @@ echo "---------- Start {{ $category }} install ----------"
 echo
 echo "[{{ title $category }} packages]
 {{ get $packages $category | toYaml}}"
-read -p "Do you want to install {{ $category }} packages?[Y/n] " -n 1 -r
-echo    # (optional) move to a new line
+{{ if (get $packages $category).default -}}
+read -p "Do you want to install {{ $category }} packages? [Y/n] " -n 1 -r
+echo
 if ! [[ $REPLY =~ ^[Nn]$ ]]
+{{ else -}}
+read -p "Do you want to install {{ $category }} packages? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+{{ end -}}
 then
     {{ if (get (get $packages $category) "native") -}}
     echo "$PREFIX Installing native packages (pacman)..."
