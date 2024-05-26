@@ -21,6 +21,7 @@ packages:
       - neofetch
       - noto-fonts
       - noto-fonts-emoji
+      - nvtop
       - p7zip
       - peek
       - picom
