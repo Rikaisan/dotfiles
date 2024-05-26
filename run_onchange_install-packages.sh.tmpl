@@ -3,7 +3,8 @@
 PREFIX="[CHEZMOI]"
 
 
-{{ if (or (eq .chezmoi.osRelease.id "arch") (.chezmoi.osRelease.idLike "arch")) -}}
+{{ if (or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.idLike "arch")) -}}
+# Install Git and Yay
 if ! command -v yay &> /dev/null
 then
     if ! command -v git &> /dev/null
@@ -20,18 +21,107 @@ then
     cd ~
 fi
 
+# Some default yay configs for ease of use
 echo "$PREFIX Configuring yay..."
 yay --save --answerdiff None --answerclean None --removemake
 
+# Packages!
+echo "$PREFIX Updating repos..."
+yay -Sy
+
+# TODO: Find a way to clean up this mess, which would probably need template functions or something similar
+
+{{ $category := "essential" }}
+echo "$PREFIX ---------- Start {{ $category }} install ----------"
+{{ if (get (get .packages.arch $category) "native") }}
 echo "$PREFIX Installing native packages (pacman)..."
-sudo pacman -Sy --needed --noconfirm {{ range .packages.arch.native -}}{{ . }} {{ end }}
+sudo pacman -S --needed --noconfirm {{ range (get .packages.arch $category).native -}}{{ . }} {{ end }}
+{{ end }}
+{{ if (get (get .packages.arch $category) "aur") }}
 echo "$PREFIX Installing aur packages (yay)..."
-yay -Sy --noconfirm --needed {{ range .packages.arch.aur -}}{{ . }} {{ end }}
+yay -S --noconfirm --needed {{ range (get .packages.arch $category).aur -}}{{ . }} {{ end }}
+{{ end }}
+{{ if (get (get .packages.arch $category) "flatpak") }}
 echo "$PREFIX Installing flatpak packages..."
-flatpak install flathub {{ range .packages.arch.flatpak -}}{{ . }} {{ end }}-y
+flatpak install flathub {{ range (get .packages.arch $category).flatpak -}}{{ . }} {{ end }}-y
+{{ end }}
 
 {{ if eq .chezmoi.osRelease.id "endeavouros" }}
+{{ if .packages.arch.essential.endeavouros }}
 echo "$PREFIX Installing EndeavourOS specific packages (yay)..."
-yay -Sy --noconfirm --needed {{ range .packages.arch.endeavouros -}}{{ . }} {{ end }}
+yay -S --noconfirm --needed {{ range .packages.arch.essential.endeavouros -}}{{ . }} {{ end }}
 {{ end }}
+{{ end }}
+echo "$PREFIX ---------- End {{ $category }} install ----------"
+
+{{ $category = "extra" }}
+echo "[{{ title $category }} packages]
+{{ get .packages.arch $category | toYaml}}"
+read -p "Do you want to install {{ $category }} packages?[Y/n] " -n 1 -r
+echo    # (optional) move to a new line
+if ! [[ $REPLY =~ ^[Nn]$ ]]
+then
+    echo "$PREFIX ---------- Start {{ $category }} install ----------"
+    {{ if (get (get .packages.arch $category) "native") }}
+    echo "$PREFIX Installing native packages (pacman)..."
+    sudo pacman -S --needed --noconfirm {{ range (get .packages.arch $category).native -}}{{ . }} {{ end }}
+    {{ end }}
+    {{ if (get (get .packages.arch $category) "aur") }}
+    echo "$PREFIX Installing aur packages (yay)..."
+    yay -S --noconfirm --needed {{ range (get .packages.arch $category).aur -}}{{ . }} {{ end }}
+    {{ end }}
+    {{ if (get (get .packages.arch $category) "flatpak") }}
+    echo "$PREFIX Installing flatpak packages..."
+    flatpak install flathub {{ range (get .packages.arch $category).flatpak -}}{{ . }} {{ end }}-y
+    {{ end }}
+    echo "$PREFIX ---------- End {{ $category }} install ----------"
+fi
+
+{{ $category = "development" }}
+echo "[{{ title $category }} packages]
+{{ get .packages.arch $category | toYaml}}"
+read -p "Do you want to install {{ $category }} packages?[Y/n] " -n 1 -r
+echo    # (optional) move to a new line
+if ! [[ $REPLY =~ ^[Nn]$ ]]
+then
+    echo "$PREFIX ---------- Start {{ $category }} install ----------"
+    {{ if (get (get .packages.arch $category) "native") }}
+    echo "$PREFIX Installing native packages (pacman)..."
+    sudo pacman -S --needed --noconfirm {{ range (get .packages.arch $category).native -}}{{ . }} {{ end }}
+    {{ end }}
+    {{ if (get (get .packages.arch $category) "aur") }}
+    echo "$PREFIX Installing aur packages (yay)..."
+    yay -S --noconfirm --needed {{ range (get .packages.arch $category).aur -}}{{ . }} {{ end }}
+    {{ end }}
+    {{ if (get (get .packages.arch $category) "flatpak") }}
+    echo "$PREFIX Installing flatpak packages..."
+    flatpak install flathub {{ range (get .packages.arch $category).flatpak -}}{{ . }} {{ end }}-y
+    {{ end }}
+    echo "$PREFIX ---------- End {{ $category }} install ----------"
+fi
+
+{{ $category = "gaming" }}
+echo "[{{ title $category }} packages]
+{{ get .packages.arch $category | toYaml}}"
+read -p "Do you want to install {{ $category }} packages?[Y/n] " -n 1 -r
+echo    # (optional) move to a new line
+if ! [[ $REPLY =~ ^[Nn]$ ]]
+then
+    echo "$PREFIX ---------- Start {{ $category }} install ----------"
+    {{ if (get (get .packages.arch $category) "native") }}
+    echo "$PREFIX Installing native packages (pacman)..."
+    sudo pacman -S --needed --noconfirm {{ range (get .packages.arch $category).native -}}{{ . }} {{ end }}
+    {{ end }}
+    {{ if (get (get .packages.arch $category) "aur") }}
+    echo "$PREFIX Installing aur packages (yay)..."
+    yay -S --noconfirm --needed {{ range (get .packages.arch $category).aur -}}{{ . }} {{ end }}
+    {{ end }}
+    {{ if (get (get .packages.arch $category) "flatpak") }}
+    echo "$PREFIX Installing flatpak packages..."
+    flatpak install flathub {{ range (get .packages.arch $category).flatpak -}}{{ . }} {{ end }}-y
+    {{ end }}
+    echo "$PREFIX ---------- End {{ $category }} install ----------"
+fi
+
+
 {{ end -}}
