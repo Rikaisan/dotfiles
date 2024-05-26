@@ -22,8 +22,10 @@ then
 fi
 
 # Some default yay configs for ease of use
-echo "$PREFIX Configuring yay..."
-yay --save --answerdiff None --answerclean None --removemake
+if [ ! -f $HOME/.config/yay/config.json ]; then
+    echo "$PREFIX '$HOME/.config/yay/config.json' not found, configuring yay..."
+    yay --save --answerdiff None --answerclean None --removemake
+fi
 
 # Packages!
 echo "$PREFIX Updating repos..."
@@ -32,7 +34,7 @@ yay -Sy
 # TODO: Find a way to clean up this mess, which would probably need template functions or something similar
 
 {{ $category := "essential" }}
-echo "$PREFIX ---------- Start {{ $category }} install ----------"
+echo "---------- Start {{ $category }} install ----------"
 {{ if (get (get .packages.arch $category) "native") }}
 echo "$PREFIX Installing native packages (pacman)..."
 sudo pacman -S --needed --noconfirm {{ range (get .packages.arch $category).native -}}{{ . }} {{ end }}
@@ -52,16 +54,17 @@ echo "$PREFIX Installing EndeavourOS specific packages (yay)..."
 yay -S --noconfirm --needed {{ range .packages.arch.essential.endeavouros -}}{{ . }} {{ end }}
 {{ end }}
 {{ end }}
-echo "$PREFIX ---------- End {{ $category }} install ----------"
+echo "---------- End {{ $category }} install ----------"
 
 {{ $category = "extra" }}
+echo "---------- Start {{ $category }} install ----------"
+echo
 echo "[{{ title $category }} packages]
 {{ get .packages.arch $category | toYaml}}"
 read -p "Do you want to install {{ $category }} packages?[Y/n] " -n 1 -r
 echo    # (optional) move to a new line
 if ! [[ $REPLY =~ ^[Nn]$ ]]
 then
-    echo "$PREFIX ---------- Start {{ $category }} install ----------"
     {{ if (get (get .packages.arch $category) "native") }}
     echo "$PREFIX Installing native packages (pacman)..."
     sudo pacman -S --needed --noconfirm {{ range (get .packages.arch $category).native -}}{{ . }} {{ end }}
@@ -74,17 +77,18 @@ then
     echo "$PREFIX Installing flatpak packages..."
     flatpak install flathub {{ range (get .packages.arch $category).flatpak -}}{{ . }} {{ end }}-y
     {{ end }}
-    echo "$PREFIX ---------- End {{ $category }} install ----------"
 fi
+echo "---------- End {{ $category }} install ----------"
 
 {{ $category = "development" }}
+echo "---------- Start {{ $category }} install ----------"
+echo
 echo "[{{ title $category }} packages]
 {{ get .packages.arch $category | toYaml}}"
 read -p "Do you want to install {{ $category }} packages?[Y/n] " -n 1 -r
 echo    # (optional) move to a new line
 if ! [[ $REPLY =~ ^[Nn]$ ]]
 then
-    echo "$PREFIX ---------- Start {{ $category }} install ----------"
     {{ if (get (get .packages.arch $category) "native") }}
     echo "$PREFIX Installing native packages (pacman)..."
     sudo pacman -S --needed --noconfirm {{ range (get .packages.arch $category).native -}}{{ . }} {{ end }}
@@ -97,17 +101,18 @@ then
     echo "$PREFIX Installing flatpak packages..."
     flatpak install flathub {{ range (get .packages.arch $category).flatpak -}}{{ . }} {{ end }}-y
     {{ end }}
-    echo "$PREFIX ---------- End {{ $category }} install ----------"
 fi
+echo "---------- End {{ $category }} install ----------"
 
 {{ $category = "gaming" }}
+echo "---------- Start {{ $category }} install ----------"
+echo
 echo "[{{ title $category }} packages]
 {{ get .packages.arch $category | toYaml}}"
 read -p "Do you want to install {{ $category }} packages?[Y/n] " -n 1 -r
 echo    # (optional) move to a new line
 if ! [[ $REPLY =~ ^[Nn]$ ]]
 then
-    echo "$PREFIX ---------- Start {{ $category }} install ----------"
     {{ if (get (get .packages.arch $category) "native") }}
     echo "$PREFIX Installing native packages (pacman)..."
     sudo pacman -S --needed --noconfirm {{ range (get .packages.arch $category).native -}}{{ . }} {{ end }}
@@ -120,8 +125,8 @@ then
     echo "$PREFIX Installing flatpak packages..."
     flatpak install flathub {{ range (get .packages.arch $category).flatpak -}}{{ . }} {{ end }}-y
     {{ end }}
-    echo "$PREFIX ---------- End {{ $category }} install ----------"
 fi
+echo "---------- End {{ $category }} install ----------"
 
 
 {{ end -}}
