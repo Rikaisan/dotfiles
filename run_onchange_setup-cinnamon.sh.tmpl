@@ -1,5 +1,7 @@
 #!/bin/bash
 {{ if eq .localEnv.desktop "cinnamon" -}}
 echo "{{ .scriptPrefix }} Loading Cinnamon data..."
-dconf load /org/cinnamon/ < data/cinnamon_settings.ini
+dconf load /org/cinnamon/ <<STDIN
+{{ template "cinnamon_settings" -}}
+STDIN
 {{ end -}}
