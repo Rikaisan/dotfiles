@@ -6,7 +6,7 @@ switch-to-activity-62bb487f-f2a4-47b7-bc1c-50bf1db2ff29=none,none,Switch to acti
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
 Switch keyboard layout to English (US, alt. intl.)=none,none,Switch keyboard layout to English (US\\, alt. intl.)
 Switch keyboard layout to English (US, intl., with dead keys)=none,none,Switch keyboard layout to English (US\\, intl.\\, with dead keys)
-Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,
+Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Keyboard Layout
 Switch to Next Keyboard Layout=Meta+Space,Meta+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
@@ -267,16 +267,14 @@ toggle do not disturb=none,,Toggle do not disturb
 [services][kitty-2.desktop]
 _launch=Meta+Return\tMeta+T
 
-[services][org.flameshot.Flameshot.desktop]
-Capture=Print
-
 [services][org.kde.kscreen.desktop]
 ShowOSD=Display
 
 [services][org.kde.spectacle.desktop]
 ActiveWindowScreenShot=none
+CurrentMonitorScreenShot=Ctrl+Print
 FullScreenScreenShot=none
 RecordWindow=none
-RectangularRegionScreenShot=none
+RectangularRegionScreenShot=Print
 WindowUnderCursorScreenShot=none
 _launch=none
