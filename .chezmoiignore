@@ -1,4 +1,10 @@
 README.md
+data/
+{{ if ne .localEnv.desktop "cinnamon" -}}
+.config/cinnamon/
+.local/share/cinnamon/
+.themes/Obsidian/
+{{ end -}}
 {{ if ne .localEnv.desktop "plasma" -}}
 .config/kglobalshortcutsrc
 {{ end -}}

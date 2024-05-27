@@ -17,5 +17,8 @@
     "vscord.status.state.idle.enabled": false,
     "vscord.status.state.text.editing": "Working on {file_name}{file_extension}",
     "git.autofetch": true,
-    "errorLens.enabled": true
+    "errorLens.enabled": true,
+    "files.associations": {
+        "*.sh.tmpl": "shellscript"
+    }
 }
