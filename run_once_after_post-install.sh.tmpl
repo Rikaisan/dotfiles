@@ -1,26 +1,23 @@
 #!/bin/bash
 
-PREFIX="[CHEZMOI]"
-
 # Install Rust
-
 if command -v rustup &> /dev/null
 then
-    echo "$PREFIX Setting up Rust..."
+    echo "{{ .scriptPrefix }} Setting up Rust..."
     rustup default stable
 fi
 
 # Setup no-root docker
 if command -v docker &> /dev/null
 then
-    echo "$PREFIX Configuring Docker..."
+    echo "{{ .scriptPrefix }} Configuring Docker..."
     sudo groupadd docker
     sudo usermod -aG docker {{ .chezmoi.username }}
     sudo systemctl enable docker --now
 fi
 
 
-read -p "$PREFIX Do you want to setup KVM/QEMU for virtualization?[y/N] " -n 1 -r
+read -p "{{ .scriptPrefix }} Do you want to setup KVM/QEMU for virtualization?[y/N] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -36,24 +33,24 @@ then
 fi
 
 {{ if eq .chezmoi.osRelease.id "endeavouros" }}
-read -p "$PREFIX Do you want to run nvidia-inst?[y/N] " -n 1 -r
+read -p "{{ .scriptPrefix }} Do you want to run nvidia-inst?[y/N] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    echo "$PREFIX Setting up NVIDIA..."
+    echo "{{ .scriptPrefix }} Setting up NVIDIA..."
     nvidia-inst
 fi
 {{ end }}
 
 if command -v envycontrol &> /dev/null
 then
-    read -p "$PREFIX Do you want to change envycontrol mode to nvidia?[y/N] " -n 1 -r
+    read -p "{{ .scriptPrefix }} Do you want to change envycontrol mode to nvidia?[y/N] " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
-        echo "$PREFIX Switching up to NVIDIA..."
+        echo "{{ .scriptPrefix }} Switching up to NVIDIA..."
         sudo envycontrol -s nvidia
     fi
 fi
 
-echo "$PREFIX Instalation finished! It's recommended that you reboot your machine now to complete the installation."
+echo "{{ .scriptPrefix }} Instalation finished! It's recommended that you reboot your machine now to complete the installation."
