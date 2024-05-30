@@ -4,4 +4,9 @@ echo "{{ .scriptPrefix }} Loading Cinnamon data..."
 dconf load /org/cinnamon/ <<STDIN
 {{ template "cinnamon_settings" -}}
 STDIN
+
+echo "{{ .scriptPrefix }} Loading X data..."
+dconf load /org/x/ <<STDIN
+{{ template "x_settings" -}}
+STDIN
 {{ end -}}
