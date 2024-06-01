@@ -7,6 +7,13 @@ then
     rustup default stable
 fi
 
+# Enable UFW
+if command -v ufw &> /dev/null
+then
+    echo "{{ .scriptPrefix }} Setting up UFW..."
+    sudo systemd enable ufw
+fi
+
 # Setup no-root docker
 if command -v docker &> /dev/null
 then
@@ -27,7 +34,6 @@ then
     sudo sed -i "s/#unix_sock_rw_perms/unix_sock_rw_perms/" /etc/libvirt/libvirtd.conf
 
     sudo usermod -aG libvirt {{ .chezmoi.username }}
-    newgrp libvirt
 
     sudo systemctl enable libvirtd.socket --now
 fi
