@@ -1,0 +1,13 @@
+height=260
+allow_images=true
+hide_scroll=true
+no_actions=true
+term=kitty
+mode=drun
+--show
+width=350
+normal_window=true
+insensitive=true
+prompt=search
+location=bottom
+#icon-size=22

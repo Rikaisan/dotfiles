@@ -9,5 +9,9 @@ data/
 .config/kglobalshortcutsrc
 {{ end -}}
 {{ if ne .localEnv.desktop "hyprland" -}}
-.hyprland
+.config/hypr/
+.config/waybar/
+.config/swaync/
+.config/wofi/
+.config/wlogout/
 {{ end -}}
