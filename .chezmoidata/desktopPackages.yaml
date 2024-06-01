@@ -1,0 +1,21 @@
+desktopPackages:
+  arch:
+    hyprland:
+      default: true
+      native:
+      - dolphin
+      - hyprcursor
+      - hyprland
+      - hyprpaper
+      - network-manager-applet
+      - picom
+      - polkit-gnome
+      - sddm
+      - swaync
+      - waybar
+      - wofi
+      - xdg-desktop-portal
+      - xdg-desktop-portal-hyprland
+      - xdg-desktop-portal-wlr
+      aur:
+      - wlogout
