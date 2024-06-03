@@ -11,7 +11,7 @@ desktopPackages:
       - network-manager-applet
       - nwg-look
       - picom
-      - polkit-gnome
+      - polkit-kde-agent
       - qt5-wayland
       - qt6-wayland
       - sddm
