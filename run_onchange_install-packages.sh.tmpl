@@ -1,75 +1,103 @@
 #!/bin/bash
 
 {{ if (or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.idLike "arch")) -}}
-# Install Git and Yay
-if ! command -v yay &> /dev/null
-then
-    if ! command -v git &> /dev/null
+    # Install Git and Yay
+    if ! command -v yay &> /dev/null
     then
-        echo "{{ .scriptPrefix }} git could not be found, installing..."
-        sudo pacman -Sy --needed --noconfirm git
+        if ! command -v git &> /dev/null
+        then
+            echo "{{ .scriptPrefix }} git could not be found, installing..."
+            sudo pacman -Sy --needed --noconfirm git
+        fi
+        echo "{{ .scriptPrefix }} yay could not be found, installing..."
+        echo "{{ .scriptPrefix }} yay could not be found, installing..."
+        cd $(mktemp -d)    
+        git clone https://aur.archlinux.org/yay.git
+        cd yay
+        makepkg -sic
+        cd ~
     fi
-    echo "{{ .scriptPrefix }} yay could not be found, installing..."
-    echo "{{ .scriptPrefix }} yay could not be found, installing..."
-    cd $(mktemp -d)    
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -sic
-    cd ~
-fi
 
-# Some default yay configs for ease of use
-if [ ! -f $HOME/.config/yay/config.json ]; then
-    echo "{{ .scriptPrefix }} '$HOME/.config/yay/config.json' not found, configuring yay..."
-    yay --save --answerdiff None --answerclean None --removemake
-fi
+    # Some default yay configs for ease of use
+    if [ ! -f $HOME/.config/yay/config.json ]; then
+        echo "{{ .scriptPrefix }} '$HOME/.config/yay/config.json' not found, configuring yay..."
+        yay --save --answerdiff None --answerclean None --removemake
+    fi
 
-# Packages!
-echo "{{ .scriptPrefix }} Updating packages..."
-yay -Syu
+    # Packages!
+    echo "{{ .scriptPrefix }} Updating packages..."
+    yay -Syu
 
-# Save variables to not lose them in range scope
-{{ $packages := .packages.arch -}}
-{{ $releaseId := .chezmoi.osRelease.id -}}
-{{ $prefix := .scriptPrefix -}}
-# Categories need to be added manually to guarantee correct order
-{{ $categories := (list "essential" "extra" "development" "gaming" "nvidia") -}}
-{{ range $category := $categories -}}
-{{ if (get $packages $category) -}}
-echo "---------- Start {{ $category }} install ----------"
-echo
-echo "[{{ title $category }} packages]
-{{ get $packages $category | toYaml}}"
-{{ if (get $packages $category).default -}}
-read -p "Do you want to install {{ $category }} packages? [Y/n] " -n 1 -r
-echo
-if ! [[ $REPLY =~ ^[Nn]$ ]]
-{{ else -}}
-read -p "Do you want to install {{ $category }} packages? [y/N] " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-{{ end -}}
-then
-    {{ if (get (get $packages $category) "native") -}}
-    echo "{{ $prefix }} Installing native packages (pacman)..."
-    sudo pacman -S --needed --noconfirm {{ range (get $packages $category).native -}}{{ . }} {{ end }}
+    # Save variables to not lose them in range scope
+    {{ $packages := .packages.arch -}}
+    {{ $releaseId := .chezmoi.osRelease.id -}}
+    {{ $prefix := .scriptPrefix -}}
+    # Categories need to be added manually to guarantee correct order
+    {{ $categories := (list "essential" "extra" "development" "gaming" "nvidia") -}}
+    {{ range $category := $categories -}}
+        {{ if (get $packages $category) -}}
+            echo "---------- Start {{ $category }} install ----------"
+            echo
+            echo "[{{ title $category }} packages]
+            {{ get $packages $category | toYaml}}"
+            {{ if (get $packages $category).default -}}
+                read -p "Do you want to install {{ $category }} packages? [Y/n] " -n 1 -r
+                echo
+                if ! [[ $REPLY =~ ^[Nn]$ ]]
+                {{ else -}}
+                read -p "Do you want to install {{ $category }} packages? [y/N] " -n 1 -r
+                echo
+                if [[ $REPLY =~ ^[Yy]$ ]]
+            {{ end -}}
+            then
+                {{ if (get (get $packages $category) "native") -}}
+                echo "{{ $prefix }} Installing native packages (pacman)..."
+                sudo pacman -S --needed --noconfirm {{ range (get $packages $category).native -}}{{ . }} {{ end }}
+                {{ end -}}
+                {{ if (get (get $packages $category) "aur") -}}
+                echo "{{ $prefix }} Installing aur packages (yay)..."
+                yay -S --noconfirm --needed {{ range (get $packages $category).aur -}}{{ . }} {{ end }}
+                {{ end -}}
+                {{ if (get (get $packages $category) "flatpak") -}}
+                echo "{{ $prefix }} Installing flatpak packages..."
+                flatpak install flathub {{ range (get $packages $category).flatpak -}}{{ . }} {{ end }}-y
+                {{ end -}}
+                {{ if eq $releaseId "endeavouros" -}}
+                {{ if (get (get $packages $category) "endeavouros") -}}
+                echo "{{ $prefix }} Installing EndeavourOS specific packages (yay)..."
+                yay -S --noconfirm --needed {{ range (get $packages $category).endeavouros -}}{{ . }} {{ end }}
+                {{ end -}}
+                {{ end -}}
+            fi
+            echo "---------- End {{ $category }} install ----------"
+        {{ end -}}
     {{ end -}}
-    {{ if (get (get $packages $category) "aur") -}}
-    echo "{{ $prefix }} Installing aur packages (yay)..."
-    yay -S --noconfirm --needed {{ range (get $packages $category).aur -}}{{ . }} {{ end }}
+    {{ $packages := .desktopPackages.arch -}}
+    {{ $releaseId := .chezmoi.osRelease.id -}}
+    {{ $prefix := .scriptPrefix -}}
+    {{ if (get $packages .localEnv.desktop) -}}
+        echo "---------- Start {{ .localEnv.desktop }} install ----------"
+        echo
+        echo "[{{ title .localEnv.desktop }} packages]
+        {{ get $packages .localEnv.desktop | toYaml}}"
+        {{ if (get (get $packages .localEnv.desktop) "native") -}}
+        echo "{{ $prefix }} Installing native packages (pacman)..."
+        sudo pacman -S --needed --noconfirm {{ range (get $packages .localEnv.desktop).native -}}{{ . }} {{ end }}
+        {{ end -}}
+        {{ if (get (get $packages .localEnv.desktop) "aur") -}}
+        echo "{{ $prefix }} Installing aur packages (yay)..."
+        yay -S --noconfirm --needed {{ range (get $packages .localEnv.desktop).aur -}}{{ . }} {{ end }}
+        {{ end -}}
+        {{ if (get (get $packages .localEnv.desktop) "flatpak") -}}
+        echo "{{ $prefix }} Installing flatpak packages..."
+        flatpak install flathub {{ range (get $packages .localEnv.desktop).flatpak -}}{{ . }} {{ end }}-y
+        {{ end -}}
+        {{ if eq $releaseId "endeavouros" -}}
+        {{ if (get (get $packages .localEnv.desktop) "endeavouros") -}}
+        echo "{{ $prefix }} Installing EndeavourOS specific packages (yay)..."
+        yay -S --noconfirm --needed {{ range (get $packages .localEnv.desktop).endeavouros -}}{{ . }} {{ end }}
+        {{ end -}}
+        {{ end -}}
+        echo "---------- End {{ .localEnv.desktop }} install ----------"
     {{ end -}}
-    {{ if (get (get $packages $category) "flatpak") -}}
-    echo "{{ $prefix }} Installing flatpak packages..."
-    flatpak install flathub {{ range (get $packages $category).flatpak -}}{{ . }} {{ end }}-y
-    {{ end -}}
-    {{ if eq $releaseId "endeavouros" -}}
-    {{ if (get (get $packages $category) "endeavouros") -}}
-    echo "{{ $prefix }} Installing EndeavourOS specific packages (yay)..."
-    yay -S --noconfirm --needed {{ range (get $packages $category).endeavouros -}}{{ . }} {{ end }}
-    {{ end -}}
-    {{ end -}}
-fi
-echo "---------- End {{ $category }} install ----------"
-{{ end -}}
-{{ end -}}
 {{ end -}}

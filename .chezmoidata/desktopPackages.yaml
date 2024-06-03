@@ -1,0 +1,29 @@
+desktopPackages:
+  arch:
+    hyprland:
+      default: true
+      native:
+      - dolphin
+      - grim
+      - hyprcursor
+      - hyprland
+      - hyprpaper
+      - network-manager-applet
+      - nwg-look
+      - picom
+      - polkit-kde-agent
+      - qt5-wayland
+      - qt6-wayland
+      - sddm
+      - slurp
+      - swappy
+      - swaync
+      - waybar
+      - wl-clipboard
+      - wofi
+      - xdg-desktop-portal
+      - xdg-desktop-portal-hyprland
+      - xdg-desktop-portal-wlr
+      aur:
+      - grimblast
+      - wlogout
