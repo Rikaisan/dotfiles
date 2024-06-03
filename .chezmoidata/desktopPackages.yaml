@@ -4,18 +4,26 @@ desktopPackages:
       default: true
       native:
       - dolphin
+      - grim
       - hyprcursor
       - hyprland
       - hyprpaper
       - network-manager-applet
+      - nwg-look
       - picom
       - polkit-gnome
+      - qt5-wayland
+      - qt6-wayland
       - sddm
+      - slurp
+      - swappy
       - swaync
       - waybar
+      - wl-clipboard
       - wofi
       - xdg-desktop-portal
       - xdg-desktop-portal-hyprland
       - xdg-desktop-portal-wlr
       aur:
+      - grimblast
       - wlogout
