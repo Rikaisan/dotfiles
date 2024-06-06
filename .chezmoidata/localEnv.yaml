@@ -1,3 +1,4 @@
 localEnv:
   # The desktop environment to copy settings for, none by default, options: none, hyprland, plasma, cinnamon
-  desktop: cinnamon
+  desktop: hyprland
+  workstation: laptop
