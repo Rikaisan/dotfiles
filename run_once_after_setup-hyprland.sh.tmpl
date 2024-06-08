@@ -1,0 +1,15 @@
+#!/bin/bash
+
+{{ if eq .localEnv.desktop "hyprland" -}}
+# Enable Bluetooth
+if command -v bluetoothctl &> /dev/null
+then
+    echo "{{ .scriptPrefix }} Setting up Bluetooth..."
+    sudo systemctl enable bluetooth --now
+fi
+
+echo "{{ .scriptPrefix }} Setting up SDDM..."
+sudo mkdir -p /etc/sddm.conf.d/
+sudo bash -c "echo \"[Theme]
+Current=catppuccin-mocha\" > /etc/sddm.conf.d/theme.conf"
+{{ end -}}

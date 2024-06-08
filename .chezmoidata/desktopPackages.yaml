@@ -3,6 +3,9 @@ desktopPackages:
     hyprland:
       default: true
       native:
+      - blueman
+      - bluez
+      - bluez-utils
       - dolphin
       - grim
       - hyprcursor
@@ -27,3 +30,4 @@ desktopPackages:
       aur:
       - grimblast
       - wlogout
+      - sddm-theme-catppuccin
