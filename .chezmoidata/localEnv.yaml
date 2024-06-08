@@ -5,3 +5,7 @@ localEnv:
   workstation: laptop
   # en, es
   keyboard: en
+  # Git config
+  git:
+    name: Rikai
+    email: rikaisensei@gmail.com
