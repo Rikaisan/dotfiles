@@ -8,7 +8,6 @@ desktopPackages:
       - bluez-utils
       - cmake
       - cpio
-      - dolphin
       - grim
       - hyprcursor
       - hyprland
@@ -16,6 +15,7 @@ desktopPackages:
       - hyprpaper
       - hyprwayland-scanner
       - meson
+      - mirage
       - network-manager-applet
       - nwg-look
       - pavucontrol
@@ -27,6 +27,7 @@ desktopPackages:
       - slurp
       - swappy
       - swaync
+      - thunar
       - waybar
       - wl-clipboard
       - wofi
@@ -37,7 +38,8 @@ desktopPackages:
       aur:
       - grimblast-git
       - sddm-theme-catppuccin
-      - wlogout
+      - selectdefaultapplication-git
       - ueberzugpp
+      - wlogout
       flatpak:
       - io.missioncenter.MissionCenter
