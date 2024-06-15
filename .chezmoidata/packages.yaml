@@ -48,10 +48,15 @@ packages:
       - zsh-syntax-highlighting
     extra:
       default: false
+      native:
+      - yt-dlp
+      - ytfzf
+      - mpv
       aur:
-      - octopi
-      flatpak:
-      - org.gnome.Boxes
+      - ani-cli
+      - ueberzugpp
+#      flatpak:
+#      - org.gnome.Boxes
     development:
       default: true
       native:
