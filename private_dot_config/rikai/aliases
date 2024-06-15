@@ -2,6 +2,10 @@ alias ls="eza --icons=auto --color=auto"
 alias rls="/bin/ls"
 
 alias logs="docker ps --format '{{.Names}}' | fzf | docker logs -f"
+
 alias ytfzf="ytfzf -T kitty"
+
 alias cor="code -r"
 alias chr="code . -r"
+
+alias tmpd="cd $(mktemp -d)"
