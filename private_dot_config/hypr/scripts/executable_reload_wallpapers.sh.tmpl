@@ -1,0 +1,12 @@
+WP1=$HOME/pictures/wallpapers/wallpaper1
+WP2=$HOME/pictures/wallpapers/wallpaper1
+
+hyprctl hyprpaper unload all
+hyprctl hyprpaper preload $WP1
+{{ if eq .localEnv.workstation "desktop" -}}
+hyprctl hyprpaper preload $WP2
+hyprctl hyprpaper wallpaper "DP-1,$WP1"
+hyprctl hyprpaper wallpaper "HDMI-A-1,$WP2"
+{{ else -}}
+hyprctl hyprpaper wallpaper "eDP-1,$WP1"
+{{ end -}}
