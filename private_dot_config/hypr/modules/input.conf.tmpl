@@ -1,7 +1,7 @@
 # https://wiki.hyprland.org/Configuring/Variables/#input
 input {
     {{ if eq .localEnv.keyboard "es" -}}
-    kb_layout = latam, us
+    kb_layout = us, latam
     {{ else -}}
     kb_layout = us, us
     kb_variant = basic, intl
