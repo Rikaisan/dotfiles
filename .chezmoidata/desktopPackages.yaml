@@ -18,6 +18,7 @@ desktopPackages:
       - mirage
       - network-manager-applet
       - nwg-look
+      - nwg-look
       - pavucontrol
       - picom
       - polkit-kde-agent
@@ -36,6 +37,8 @@ desktopPackages:
       - xdg-desktop-portal-wlr
       - xsensors
       aur:
+      - adw-gtk3
+      - gradience-git
       - grimblast-git
       - mission-center
       - sddm-theme-catppuccin

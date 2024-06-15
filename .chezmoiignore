@@ -14,4 +14,10 @@ data/
 .config/swaync/
 .config/wofi/
 .config/wlogout/
+.config/presets/user/
+.config/private_gtk-3.0/
+.config/private_gtk-4.0/
+.icons/
+.config/xsettingsd/
+.gtkrc-2.0
 {{ end -}}
