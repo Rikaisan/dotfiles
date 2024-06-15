@@ -16,8 +16,8 @@ hyprpm reload # Reload the plugins
 
 echo "{{ .scriptPrefix }} Setting up Hyprland wallpapers..."
 if ! [[ -e $HOME/Pictures/wallpaper0 ]]; then
-    ln -s $HOME/{{ .localEnv.wallpaper1 }} $HOME/Pictures/wallpaper0
-    ln -s $HOME/{{ .localEnv.wallpaper2 }} $HOME/Pictures/wallpaper1
+    ln -s $HOME/{{ .localEnv.wallpaper1 }} $HOME/Pictures/wallpapers/wallpaper1
+    ln -s $HOME/{{ .localEnv.wallpaper2 }} $HOME/Pictures/wallpapers/wallpaper2
 fi
 
 echo "{{ .scriptPrefix }} Setting up SDDM..."
