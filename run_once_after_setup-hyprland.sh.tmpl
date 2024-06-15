@@ -1,6 +1,8 @@
 #!/bin/bash
 
 {{ if eq .localEnv.desktop "hyprland" -}}
+echo "{{ .scriptPrefix }} Setting up Hyprland..."
+
 # Enable Bluetooth
 if command -v bluetoothctl &> /dev/null
 then
@@ -20,8 +22,12 @@ if ! [[ -e $HOME/Pictures/wallpaper0 ]]; then
     ln -s $HOME/{{ .localEnv.wallpaper2 }} $HOME/Pictures/wallpapers/wallpaper2
 fi
 
+read -p "Do you want to install/replace SDDM config? [Y/n] " -n 1 -r
+echo
+if ! [[ $REPLY =~ ^[Nn]$ ]] then
 echo "{{ .scriptPrefix }} Setting up SDDM..."
 sudo mkdir -p /etc/sddm.conf.d/
 sudo bash -c "echo \"[Theme]
 Current=catppuccin-mocha\" > /etc/sddm.conf.d/theme.conf"
+fi
 {{ end -}}
