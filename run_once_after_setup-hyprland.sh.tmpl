@@ -14,6 +14,12 @@ hyprpm add https://github.com/Duckonaut/split-monitor-workspaces # Add the plugi
 hyprpm enable split-monitor-workspaces # Enable the plugin
 hyprpm reload # Reload the plugins
 
+echo "{{ .scriptPrefix }} Setting up Hyprland wallpapers..."
+if ! [[ -e $HOME/Pictures/wallpaper0 ]]; then
+    ln -s $HOME/{{ .localEnv.wallpaper1 }} $HOME/Pictures/wallpaper0
+    ln -s $HOME/{{ .localEnv.wallpaper2 }} $HOME/Pictures/wallpaper1
+fi
+
 echo "{{ .scriptPrefix }} Setting up SDDM..."
 sudo mkdir -p /etc/sddm.conf.d/
 sudo bash -c "echo \"[Theme]

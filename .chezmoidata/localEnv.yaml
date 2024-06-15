@@ -2,7 +2,10 @@ localEnv:
   # The desktop environment to copy settings for, none by default, options: none, hyprland, plasma, cinnamon
   desktop: hyprland
   # desktop, laptop
-  workstation: laptop
+  workstation: desktop
+  # Wallpapers relative to HOME
+  wallpaper1: 'Pictures/wallpapers/purple_stare.png'
+  wallpaper2: 'Pictures/wallpapers/purple_stare.png'
   # en, es
   keyboard: en
   # Git config
