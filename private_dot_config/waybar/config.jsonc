@@ -98,7 +98,7 @@
   "memory": {
       "interval": 3,
       "format": "  {used:0.2f} / 16 GiB",
-      "on-click": "flatpak run io.missioncenter.MissionCenter"
+      "on-click": "missioncenter"
   },
 
   "cpu": {
@@ -107,7 +107,7 @@
     "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
     "max-length": 16,
     "min-length": 13,
-    "on-click": "flatpak run io.missioncenter.MissionCenter"
+    "on-click": "missioncenter"
   },
 
   "battery": {

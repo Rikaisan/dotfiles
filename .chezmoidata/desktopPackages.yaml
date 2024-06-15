@@ -37,9 +37,8 @@ desktopPackages:
       - xsensors
       aur:
       - grimblast-git
+      - mission-center
       - sddm-theme-catppuccin
       - selectdefaultapplication-git
       - ueberzugpp
       - wlogout
-      flatpak:
-      - io.missioncenter.MissionCenter
