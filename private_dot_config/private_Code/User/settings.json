@@ -19,7 +19,8 @@
     "git.autofetch": true,
     "errorLens.enabled": true,
     "files.associations": {
-        "*.sh.tmpl": "shellscript"
+        "*.sh.tmpl": "shellscript",
+        "*conf.tmpl": "properties"
     },
     "todo-tree.regex.regex": "(--|//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)"
 }
