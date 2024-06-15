@@ -20,5 +20,6 @@
     "errorLens.enabled": true,
     "files.associations": {
         "*.sh.tmpl": "shellscript"
-    }
+    },
+    "todo-tree.regex.regex": "(--|//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)"
 }
