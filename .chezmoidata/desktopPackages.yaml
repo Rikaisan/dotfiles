@@ -6,11 +6,16 @@ desktopPackages:
       - blueman
       - bluez
       - bluez-utils
+      - cmake
+      - cpio
       - dolphin
       - grim
       - hyprcursor
       - hyprland
+      - hyprlang
       - hyprpaper
+      - hyprwayland-scanner
+      - meson
       - network-manager-applet
       - nwg-look
       - picom
@@ -28,6 +33,7 @@ desktopPackages:
       - xdg-desktop-portal-hyprland
       - xdg-desktop-portal-wlr
       aur:
-      - grimblast
-      - wlogout
+      - grimblast-git
+      - hyprsome-git
       - sddm-theme-catppuccin
+      - wlogout
