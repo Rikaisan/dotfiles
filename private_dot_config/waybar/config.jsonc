@@ -227,7 +227,7 @@
 
   "clock#date": {
       //"format": "  {:%H:%M, %e %b}",
-      "format": "  {:%H:%M, %d %B (%a)}",
+      "format": "  {:%I:%M %p, %d %B (%a)}",
       "tooltip-format": "<tt><big>{calendar}</big></tt>",
       "today-format": "<big>{}</big>"
   },
