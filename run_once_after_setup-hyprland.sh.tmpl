@@ -17,14 +17,14 @@ hyprpm enable split-monitor-workspaces # Enable the plugin
 hyprpm reload # Reload the plugins
 
 echo "{{ .scriptPrefix }} Setting up Hyprland wallpapers..."
-if ! [[ -e $HOME/Pictures/wallpaper0 ]]; then
+if ! [[ -e $HOME/Pictures/wallpapers/wallpaper1 ]]; then
     ln -s $HOME/{{ .localEnv.wallpaper1 }} $HOME/Pictures/wallpapers/wallpaper1
     ln -s $HOME/{{ .localEnv.wallpaper2 }} $HOME/Pictures/wallpapers/wallpaper2
 fi
 
-read -p "Do you want to install/replace SDDM config? [Y/n] " -n 1 -r
+read -p "Do you want to install/replace the SDDM theme config? [y/N] " -n 1 -r
 echo
-if ! [[ $REPLY =~ ^[Nn]$ ]] then
+if [[ $REPLY =~ ^[Yy]$ ]] then
 echo "{{ .scriptPrefix }} Setting up SDDM..."
 sudo mkdir -p /etc/sddm.conf.d/
 sudo bash -c "echo \"[Theme]
