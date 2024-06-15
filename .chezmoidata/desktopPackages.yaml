@@ -18,6 +18,7 @@ desktopPackages:
       - meson
       - network-manager-applet
       - nwg-look
+      - pavucontrol
       - picom
       - polkit-kde-agent
       - qt5-wayland
@@ -32,7 +33,10 @@ desktopPackages:
       - xdg-desktop-portal
       - xdg-desktop-portal-hyprland
       - xdg-desktop-portal-wlr
+      - xsensors
       aur:
       - grimblast-git
       - sddm-theme-catppuccin
       - wlogout
+      flatpak:
+      - io.missioncenter.MissionCenter

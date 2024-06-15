@@ -15,16 +15,9 @@
   "spacing": 1, // Gaps between modules (4px)
 
   "modules-left": [
-    //   "custom/rofi",
-      //"custom/power",
       "hyprland/window",
-      //"custom/screenshot_t",
-      //"hyprland/workspaces",
-      //"hyprland/submap",
-      //"temperature",
-      //"idle_inhibitor",
       //"mpd"
-    //   "custom/media",
+      "custom/media",
       "custom/cava-internal"
   ],
   "modules-center": [
@@ -42,7 +35,7 @@
       "wireplumber",
       "hyprland/language",
       "tray",
-      "custom/controls",
+    //   "custom/controls",
       "custom/power"
   ],
 
@@ -92,11 +85,8 @@
   },
 
   "temperature": {
-      // "thermal-zone": 1,
       "interval": 4,
-      //"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
       "critical-threshold": 80,
-      // "format-critical": " {temperatureC}°C",
       "format-critical": "  {temperatureC}°C",
       "format": "{icon}  {temperatureC}°C",
       "format-icons": ["", "", ""],
@@ -109,6 +99,15 @@
       "interval": 3,
       "format": "  {used:0.2f} / 16 GiB",
       "on-click": "flatpak run io.missioncenter.MissionCenter"
+  },
+
+  "cpu": {
+    "interval": 1,
+    //"format": " {}%", // Icon: microchip
+    "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
+    "max-length": 16,
+    "min-length": 13,
+    "on-click": "flatpak run io.missioncenter.MissionCenter"
   },
 
   "battery": {
@@ -258,14 +257,6 @@
     "on-click": "systemctl --user is-active gammastep && systemctl --user stop gammastep || systemctl --user start gammastep"
   },
 
-  "cpu": {
-      "interval": 1,
-      //"format": " {}%", // Icon: microchip
-      "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
-      "max-length": 16,
-      "min-length": 13
-  },
-
   "custom/title": {
       "format": "{}",
       "interval": 0,
@@ -290,12 +281,6 @@
       "max-length": 35,
       "exec": "$HOME/.scripts/title"
   },
-
-  /*"custom/keyboard": {
-      "format": " {}",
-      "interval": 1,
-      "exec": "$HOME/.config/waybar/get_kbdlayout.sh"
-  },*/
 
   "hyprland/workspaces": {
       "all-outputs": false,
