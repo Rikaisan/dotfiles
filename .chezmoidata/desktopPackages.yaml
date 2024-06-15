@@ -38,5 +38,6 @@ desktopPackages:
       - grimblast-git
       - sddm-theme-catppuccin
       - wlogout
+      - ueberzugpp
       flatpak:
       - io.missioncenter.MissionCenter
