@@ -9,3 +9,13 @@ alias cor="code -r"
 alias chr="code . -r"
 
 alias tmpd="cd $(mktemp -d)"
+
+alias watchlog='func_watchlog'
+func_watchlog() {
+    tail -f "$1" | bat -pp -l cclog
+}
+
+alias chwph='func_chwphyprland'
+func_chwphyprland() {
+    chwp $1 && $HOME/.config/hypr/scripts/reload_wallpapers.sh
+}
