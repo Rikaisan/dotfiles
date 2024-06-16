@@ -25,6 +25,6 @@ if [[ $XDG_SESSION_TYPE == "x11" ]]; then
 	setxkbmap -option ctrl:nocaps
 fi
 
-{{ if eq .localEnv.hyprland.installPlugins true -}}
+{{ if and (eq .localEnv.desktop "hyprland") (eq .localEnv.hyprland.installPlugins true) -}}
 bash ~/.config/hypr/scripts/post_install.sh
 {{ end -}}
