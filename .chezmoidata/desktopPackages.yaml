@@ -8,10 +8,12 @@ desktopPackages:
       - bluez-utils
       - cmake
       - cpio
+      - gnome-font-viewer
       - grim
       - hyprcursor
       - hyprland
       - hyprlang
+      - hyprlock
       - hyprpaper
       - hyprwayland-scanner
       - meson
@@ -43,5 +45,7 @@ desktopPackages:
       - mission-center
       - sddm-theme-catppuccin
       - selectdefaultapplication-git
+      - ttf-material-symbols-variable-git
+      - ttf-rubik-vf
       - ueberzugpp
       - wlogout
