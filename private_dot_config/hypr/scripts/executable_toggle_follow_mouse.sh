@@ -1,7 +1,9 @@
 #!/bin/bash
 
 FILE=~/.config/hypr/modules/input.conf
-CURRENT_STATUS=$(cat $FILE | grep follow_mouse | awk '{print $3}')
+
+# CURRENT_STATUS=$(cat $FILE | grep follow_mouse | awk '{print $3}')
+CURRENT_STATUS=$(hyprctl getoption -j input:follow_mouse | jq ".int")
 
 case $CURRENT_STATUS in
     0)
