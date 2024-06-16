@@ -13,4 +13,6 @@ localEnv:
     name: Rikai
     email: rikaisensei@gmail.com
   hyprland:
-    installPlugins: true
+    installPlugins: false
+    lockpaper: 'Pictures/wallpapers/purple_stare.png'
+    

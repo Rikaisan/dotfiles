@@ -4,8 +4,8 @@
 # $entry_color = rgba(C6C5D6FF)
 $text_color = rgba(FFFFFFFF)
 $entry_background_color = rgba(00000088)
-$entry_border_color = rgba(00000088)
-$entry_color = rgba(FFFFFFFF)
+$entry_border_color = rgba(00000000)
+$password_color = rgba(FFFFFFFF)
 $font_family = Rubik Light
 $font_family_clock = Rubik Light
 $font_material_symbols = Material Symbols Rounded
@@ -15,10 +15,9 @@ general {
 }
 
 background {
-    path = ~/Pictures/wallpapers/purple_stare.png
+    path = {{ .localEnv.hyprland.lockpaper -}}
     # color = rgba(00000099)
     # color = rgba(0D0D17FF)
-    # path = {{ SWWW_WALL }}
     blur_size = 5
     blur_passes = 2
 }
@@ -30,7 +29,8 @@ input-field {
     dots_spacing = 0.3
     outer_color = $entry_border_color
     inner_color = $entry_background_color
-    font_color = $entry_color
+    font_color = $password_color
+    placeholder_text = <span foreground="white" alpha="50%">Input password...</span>
     # fade_on_empty = false
 
     position = 0, 20
