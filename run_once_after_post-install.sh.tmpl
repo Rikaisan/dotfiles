@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Rebuild bat cache
+if command -v bat &> /dev/null
+then
+    echo "{{ .scriptPrefix }} Rebuilding Bat cache..."
+    bat cache --build
+fi
+
 # Install Rust
 if command -v rustup &> /dev/null
 then
