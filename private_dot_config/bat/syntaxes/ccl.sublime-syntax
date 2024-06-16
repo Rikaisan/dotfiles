@@ -1,6 +1,6 @@
 %YAML 1.2
 ---
-name: "CC Log"
+name: cclog
 file_extensions: [cc, ccl, rl, rcc]
 scope: text
 
