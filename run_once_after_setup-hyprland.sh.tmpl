@@ -10,11 +10,8 @@ then
     sudo systemctl enable bluetooth --now
 fi
 
-echo "{{ .scriptPrefix }} Setting up Hyprland plugins..."
-hyprpm update
-hyprpm add https://github.com/Duckonaut/split-monitor-workspaces # Add the plugin repository
-hyprpm enable split-monitor-workspaces # Enable the plugin
-hyprpm reload # Reload the plugins
+hyprctl setcursor Qogir 24
+
 
 echo "{{ .scriptPrefix }} Setting up Hyprland wallpapers..."
 if ! [[ -e $HOME/Pictures/wallpapers/wallpaper1 ]]; then

@@ -21,3 +21,6 @@ data/
 .config/xsettingsd/
 .gtkrc-2.0
 {{ end -}}
+{{ if ne .localEnv.hyprland.installPlugins true -}}
+.config/hypr/scripts/post_install.sh
+{{ end -}}

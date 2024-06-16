@@ -12,3 +12,5 @@ localEnv:
   git:
     name: Rikai
     email: rikaisensei@gmail.com
+  hyprland:
+    installPlugins: true
