@@ -20,6 +20,7 @@ packages:
       - nano
       - nano-syntax-highlighting
       - neofetch
+      - neovim
       - noto-fonts
       - noto-fonts-emoji
       - nvtop
