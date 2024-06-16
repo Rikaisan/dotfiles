@@ -22,5 +22,10 @@
         "*.sh.tmpl": "shellscript",
         "*conf.tmpl": "properties"
     },
-    "todo-tree.regex.regex": "(--|//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)"
+    "todo-tree.regex.regex": "(--|//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "cmake.showOptionsMovedNotification": false
 }

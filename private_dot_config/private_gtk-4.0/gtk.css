@@ -92,6 +92,18 @@ https://github.com/GradienceTeam/Gradience
 @define-color dark_3 #3d3846;
 @define-color dark_4 #241f31;
 @define-color dark_5 #000000;
+/*
+Generated with Gradience
+
+Issues caused by theming should be reported to Gradience repository, and not to upstream
+
+https://github.com/GradienceTeam/Gradience
+*/
+
+
+.navigation-sidebar {
+background-color: #101419;
+}
 
 .navigation-sidebar {
 background-color: #101419;
