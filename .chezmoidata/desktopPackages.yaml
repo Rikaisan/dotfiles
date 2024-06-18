@@ -8,14 +8,17 @@ desktopPackages:
       - bluez-utils
       - cmake
       - cpio
+      - ffmpegthumbnailer
       - gnome-font-viewer
       - grim
+      - gvfs
       - hyprcursor
       - hyprland
       - hyprlang
       - hyprlock
       - hyprpaper
       - hyprwayland-scanner
+      - libgsf
       - meson
       - mirage
       - network-manager-applet
@@ -31,9 +34,14 @@ desktopPackages:
       - swappy
       - swaync
       - thunar
+      - thunar-archive-plugin
+      - thunar-media-tags-plugin
+      - tumbler
       - waybar
+      - webp-pixbuf-loader
       - wl-clipboard
       - wofi
+      - xarchiver
       - xdg-desktop-portal
       - xdg-desktop-portal-hyprland
       - xdg-desktop-portal-wlr
