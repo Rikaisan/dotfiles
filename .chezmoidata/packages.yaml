@@ -34,6 +34,7 @@ packages:
       - rustup
       - starship
       - texinfo
+      - time
       - tldr
       - tmux
       - ttf-font-awesome
@@ -63,6 +64,8 @@ packages:
       native:
       - docker
       - docker-compose
+      - clang
+      - glfw
       aur:
       - nvm
       - visual-studio-code-bin
