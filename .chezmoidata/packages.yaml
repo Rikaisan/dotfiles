@@ -66,6 +66,7 @@ packages:
       - docker-compose
       - clang
       - glfw
+      - elixir
       aur:
       - nvm
       - visual-studio-code-bin
