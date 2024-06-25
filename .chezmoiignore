@@ -8,6 +8,9 @@ data/
 {{ if ne .localEnv.desktop "plasma" -}}
 .config/kglobalshortcutsrc
 {{ end -}}
+{{ if eq .localEnv.git.copy false -}}
+.gitconfig
+{{ end -}}
 {{ if ne .localEnv.desktop "hyprland" -}}
 .config/hypr/
 .config/waybar/

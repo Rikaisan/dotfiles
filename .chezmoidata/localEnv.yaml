@@ -10,6 +10,8 @@ localEnv:
   keyboard: en
   # Git config
   git:
+    # Enable to copy git info over to your computer
+    copy: false
     name: Rikai
     email: rikaisensei@gmail.com
   hyprland:
