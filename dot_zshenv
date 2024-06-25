@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.local/bin/rikai:/usr/local/bin:$PATH
 
+export MOZ_ENABLE_WAYLAND=1
+
 # Aliases
 if [[ -e ~/.config/rikai/aliases ]]; then
   source ~/.config/rikai/aliases
