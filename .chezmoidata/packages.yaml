@@ -8,7 +8,6 @@ packages:
       - btop
       - chezmoi
       - eza
-      - firefox
       - flatpak
       - fzf
       - gdu
@@ -42,6 +41,7 @@ packages:
       - ttf-opensans
       - ufw
       - vim
+      - vivaldi
       - vlc
       - wget
       - zoxide
@@ -75,10 +75,10 @@ packages:
     gaming:
       default: false
       native:
-      - discord
       - steam
       aur:
       - prismlauncher-qt5-bin
+      - webcord
     nvidia:
       default: false
       aur:
