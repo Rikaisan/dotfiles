@@ -28,5 +28,8 @@
         "workbench.action.tasks.runTask"
     ],
     "cmake.showOptionsMovedNotification": false,
-    "pixelbyte.love2d.path": "/usr/bin/love"
+    "pixelbyte.love2d.path": "/usr/bin/love",
+    "zig.path": "zig",
+    "zig.zls.path": "zls",
+    "zig.initialSetupDone": true
 }
