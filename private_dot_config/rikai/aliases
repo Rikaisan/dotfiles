@@ -4,6 +4,9 @@ alias rls="/bin/ls"
 alias logs="docker ps --format '{{.Names}}' | fzf | docker logs -f"
 
 alias ytfzf="ytfzf -T kitty"
+alias dlmp3="yt-dlp -x --audio-format mp3"
+alias dlwav="yt-dlp -x --audio-format wav"
+alias dla="yt-dlp -x --audio-format"
 
 alias cor="code -r"
 alias chr="code . -r"
