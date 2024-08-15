@@ -56,4 +56,5 @@ desktopPackages:
       - ttf-material-symbols-variable-git
       - ttf-rubik-vf
       - ueberzugpp
+      - webcord
       - wlogout

@@ -8,6 +8,7 @@ packages:
       - btop
       - chezmoi
       - eza
+      - firefox
       - flatpak
       - fzf
       - gdu
@@ -76,9 +77,9 @@ packages:
       default: false
       native:
       - steam
+      - discord
       aur:
       - prismlauncher-qt5-bin
-      - webcord
     nvidia:
       default: false
       aur:
