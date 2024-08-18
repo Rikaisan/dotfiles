@@ -71,8 +71,7 @@ packages:
       aur:
       - nvm
       - visual-studio-code-bin
-      flatpak:
-      - org.godotengine.Godot
+      - godot-manager-bin
     gaming:
       default: false
       native:
