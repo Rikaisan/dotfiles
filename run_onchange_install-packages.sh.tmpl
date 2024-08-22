@@ -1,6 +1,8 @@
 #!/bin/bash
 
 {{ if (or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.idLike "arch")) -}}
+    echo "{{ .scriptPrefix }} Updating the keyring..."
+    sudo pacman -Sy archlinux-keyring
     # Install Git and Yay
     if ! command -v yay &> /dev/null
     then
@@ -9,7 +11,6 @@
             echo "{{ .scriptPrefix }} git could not be found, installing..."
             sudo pacman -Sy --needed --noconfirm git
         fi
-        echo "{{ .scriptPrefix }} yay could not be found, installing..."
         echo "{{ .scriptPrefix }} yay could not be found, installing..."
         cd $(mktemp -d)    
         git clone https://aur.archlinux.org/yay.git
