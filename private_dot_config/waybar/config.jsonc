@@ -310,7 +310,7 @@
 //   "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
 //   "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
       "sort-by-number": true,
-      "active-only": true
+      "active-only": false
   },
 
   "custom/controls": {
