@@ -2,7 +2,7 @@
 
 {{ if (or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.idLike "arch")) -}}
     echo "{{ .scriptPrefix }} Updating the keyring..."
-    sudo pacman -Sy archlinux-keyring
+    sudo pacman -Sy --needed archlinux-keyring
     # Install Git and Yay
     if ! command -v yay &> /dev/null
     then
