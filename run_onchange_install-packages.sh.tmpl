@@ -39,7 +39,7 @@
         {{ if (get $packages $category) -}}
             echo "---------- Start {{ $category }} install ----------"
             echo
-            echo "[{{ title $category }} packages]\n{{ get $packages $category | toYaml}}"
+            echo -e "[{{ title $category }} packages]\n{{ get $packages $category | toYaml}}"
             {{ if (get $packages $category).default -}}
                 read -p "Do you want to install {{ $category }} packages? [Y/n] " -n 1 -r
                 echo
@@ -78,7 +78,7 @@
     {{ if (get $packages .localEnv.desktop) -}}
         echo "---------- Start {{ .localEnv.desktop }} install ----------"
         echo
-        echo "[{{ title .localEnv.desktop }} packages]\n{{ get $packages .localEnv.desktop | toYaml}}"
+        echo -e "[{{ title .localEnv.desktop }} packages]\n{{ get $packages .localEnv.desktop | toYaml}}"
         {{ if (get (get $packages .localEnv.desktop) "native") -}}
         echo "{{ $prefix }} Installing native packages (pacman)..."
         sudo pacman -S --needed --noconfirm {{ range (get $packages .localEnv.desktop).native -}}{{ . }} {{ end }}
