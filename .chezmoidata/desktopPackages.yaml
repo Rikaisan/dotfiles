@@ -23,7 +23,6 @@ desktopPackages:
       - mirage
       - network-manager-applet
       - nwg-look
-      - nwg-look
       - pavucontrol
       - picom
       - polkit-kde-agent
@@ -55,6 +54,5 @@ desktopPackages:
       - selectdefaultapplication-git
       - ttf-material-symbols-variable-git
       - ttf-rubik-vf
-      - ueberzugpp
       - webcord
       - wlogout

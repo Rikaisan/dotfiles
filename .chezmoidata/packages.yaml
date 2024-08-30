@@ -29,7 +29,6 @@ packages:
       - picom
       - python-pillow
       - qbittorrent
-      - ranger
       - ripgrep
       - rustup
       - starship
@@ -45,6 +44,7 @@ packages:
       - vivaldi
       - vlc
       - wget
+      - yazi
       - zoxide
       - zsh
       - zsh-autosuggestions
@@ -57,7 +57,6 @@ packages:
       - mpv
       aur:
       - ani-cli
-      - ueberzugpp
 #      flatpak:
 #      - org.gnome.Boxes
     development:
