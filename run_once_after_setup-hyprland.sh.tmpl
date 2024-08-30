@@ -25,6 +25,8 @@ if [[ $REPLY =~ ^[Yy]$ ]] then
 echo "{{ .scriptPrefix }} Setting up SDDM..."
 sudo mkdir -p /etc/sddm.conf.d/
 sudo bash -c "echo \"[Theme]
-Current=catppuccin-mocha\" > /etc/sddm.conf.d/theme.conf"
+Current=breeze
+CursorTheme=Qogir
+Font=Noto Sans,10,-1,0,400,0,0,0,0,0,0,0,0,0,0,1\" > /etc/sddm.conf.d/theme.conf"
 fi
 {{ end -}}

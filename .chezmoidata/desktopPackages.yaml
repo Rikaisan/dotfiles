@@ -6,6 +6,9 @@ desktopPackages:
       - blueman
       - bluez
       - bluez-utils
+      - breeze 6.1.4-1
+      - breeze-gtk 6.1.4-1
+      - breeze-icons 6.5.0-1
       - cmake
       - cpio
       - ffmpegthumbnailer
@@ -22,11 +25,11 @@ desktopPackages:
       - meson
       - mirage
       - network-manager-applet
-      - nwg-look
       - ninja
-      - pavucontrol
+      - nwg-look
       - picom
       - polkit-kde-agent
+      - qqc2-breeze-style 6.1.4-1
       - qt5-wayland
       - qt6-wayland
       - sddm
@@ -51,7 +54,6 @@ desktopPackages:
       - gradience-git
       - grimblast-git
       - mission-center
-      - sddm-theme-catppuccin
       - selectdefaultapplication-git
       - ttf-material-symbols-variable-git
       - ttf-rubik-vf
