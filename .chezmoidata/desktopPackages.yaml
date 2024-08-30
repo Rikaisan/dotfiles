@@ -6,9 +6,9 @@ desktopPackages:
       - blueman
       - bluez
       - bluez-utils
-      - breeze 6.1.4-1
-      - breeze-gtk 6.1.4-1
-      - breeze-icons 6.5.0-1
+      - breeze
+      - breeze-gtk
+      - breeze-icons
       - cmake
       - cpio
       - ffmpegthumbnailer
@@ -29,7 +29,7 @@ desktopPackages:
       - nwg-look
       - picom
       - polkit-kde-agent
-      - qqc2-breeze-style 6.1.4-1
+      - qqc2-breeze-style
       - qt5-wayland
       - qt6-wayland
       - sddm
