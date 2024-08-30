@@ -31,5 +31,6 @@
     "pixelbyte.love2d.path": "/usr/bin/love",
     "zig.path": "zig",
     "zig.zls.path": "zls",
-    "zig.initialSetupDone": true
+    "zig.initialSetupDone": true,
+    "godotTools.editorPath.godot4": "/home/rikai/.local/share/godot-manager/versions/4.3-stable/Godot_v4.3-stable_linux.x86_64"
 }
