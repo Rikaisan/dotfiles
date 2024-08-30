@@ -23,6 +23,7 @@ desktopPackages:
       - mirage
       - network-manager-applet
       - nwg-look
+      - ninja
       - pavucontrol
       - picom
       - polkit-kde-agent

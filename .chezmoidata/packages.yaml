@@ -62,11 +62,15 @@ packages:
     development:
       default: true
       native:
+      - clang
+      - cmake
+      - cpio
       - docker
       - docker-compose
-      - clang
-      - glfw
       - elixir
+      - glfw
+      - meson
+      - ninja
       aur:
       - nvm
       - visual-studio-code-bin
