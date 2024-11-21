@@ -25,3 +25,5 @@ func_chwphyprland() {
 
 alias loadnvm="source /usr/share/nvm/init-nvm.sh"
 alias lnvm=loadnvm
+
+alias dockerclean="docker images | tail +2 | awk '\$1 == \"<none>\" {print $3}' | xargs -r docker rmi -f"
