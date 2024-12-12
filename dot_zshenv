@@ -7,3 +7,8 @@ export MOZ_ENABLE_WAYLAND=1
 if [[ -e ~/.config/rikai/aliases ]]; then
   source ~/.config/rikai/aliases
 fi
+
+# Computer specific aliases and sources, not meant to be commited
+if [[ -e ~/.config/rikai/aliases ]]; then
+  source ~/.config/rikai/custom
+fi
