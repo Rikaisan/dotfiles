@@ -9,9 +9,10 @@ alias dlwav="yt-dlp -x --audio-format wav"
 alias dla="yt-dlp -x --audio-format"
 alias dlogg="func_download_ogg"
 func_download_ogg() {
-    yt-dlp -x --audio-format mp3 -o $2.mp3 $1
-    ffmpeg -i $2.mp3 $2.ogg
-    rm $2.mp3
+    file_name=$(echo "$*" | cut -d ' ' -f2- | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
+    yt-dlp -x --audio-format mp3 -o $file_name.mp3 $1
+    ffmpeg -i $file_name.mp3 $file_name.ogg
+    rm $file_name.mp3
 }
 
 alias cor="code -r"
