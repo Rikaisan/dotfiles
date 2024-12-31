@@ -7,6 +7,12 @@ alias ytfzf="ytfzf -T kitty"
 alias dlmp3="yt-dlp -x --audio-format mp3"
 alias dlwav="yt-dlp -x --audio-format wav"
 alias dla="yt-dlp -x --audio-format"
+alias dlogg="func_download_ogg"
+func_download_ogg() {
+    yt-dlp -x --audio-format mp3 -o $2.mp3 $1
+    ffmpeg -i $2.mp3 $2.ogg
+    rm $2.mp3
+}
 
 alias cor="code -r"
 alias chr="code . -r"
