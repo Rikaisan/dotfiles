@@ -30,7 +30,6 @@ packages:
       - python-pillow
       - qbittorrent
       - ripgrep
-      - rustup
       - starship
       - texinfo
       - time
@@ -49,6 +48,9 @@ packages:
       - zsh
       - zsh-autosuggestions
       - zsh-syntax-highlighting
+      flatpak:
+      - com.github.tchx84.Flatseal
+      - org.gnome.Boxes
     extra:
       default: false
       native:
@@ -57,8 +59,6 @@ packages:
       - mpv
       aur:
       - ani-cli
-#      flatpak:
-#      - org.gnome.Boxes
     development:
       default: true
       native:
@@ -67,12 +67,13 @@ packages:
       - cpio
       - docker
       - docker-compose
-      - elixir
       - glfw
       - meson
       - ninja
+      - rust
+      - zig
       aur:
-      - nvm
+      # - nvm
       - visual-studio-code-bin
       - godot-manager-bin
     gaming:
@@ -80,8 +81,8 @@ packages:
       native:
       - steam
       - discord
-      aur:
-      - prismlauncher-qt5-bin
+      - prismlauncher
+      - piper
     nvidia:
       default: false
       aur:
