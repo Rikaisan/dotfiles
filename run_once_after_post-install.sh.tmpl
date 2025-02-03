@@ -7,17 +7,11 @@ then
     bat cache --build
 fi
 
-# Install Rust
-if command -v rustup &> /dev/null
-then
-    echo "{{ .scriptPrefix }} Setting up Rust..."
-    rustup default stable
-fi
-
 # Enable UFW
 if command -v ufw &> /dev/null
 then
     echo "{{ .scriptPrefix }} Setting up UFW..."
+    sudo ufw enable
     sudo systemd enable ufw
 fi
 
