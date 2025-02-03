@@ -23,7 +23,6 @@ desktopPackages:
       - hyprwayland-scanner
       - libgsf
       - meson
-      # - mirage
       - network-manager-applet
       - ninja
       - nwg-look
@@ -49,12 +48,11 @@ desktopPackages:
       - xdg-desktop-portal-hyprland
       - xsensors
       aur:
-      # - adw-gtk3
-      # - gradience-git
       - grimblast-git
       - mission-center
+      - qview
       - selectdefaultapplication-git
       - ttf-material-symbols-variable-git
       - ttf-rubik-vf
-      - webcord
+      # - vesktop
       - wlogout
