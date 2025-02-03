@@ -44,7 +44,7 @@
                 read -p "Do you want to install {{ $category }} packages? [Y/n] " -n 1 -r
                 echo
                 if ! [[ $REPLY =~ ^[Nn]$ ]]
-                {{ else -}}
+            {{ else -}}
                 read -p "Do you want to install {{ $category }} packages? [y/N] " -n 1 -r
                 echo
                 if [[ $REPLY =~ ^[Yy]$ ]]
