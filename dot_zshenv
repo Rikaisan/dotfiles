@@ -9,6 +9,6 @@ if [[ -e ~/.config/rikai/aliases ]]; then
 fi
 
 # Computer specific aliases and sources, not meant to be commited
-if [[ -e ~/.config/rikai/aliases ]]; then
+if [[ -e ~/.config/rikai/custom ]]; then
   source ~/.config/rikai/custom
 fi
