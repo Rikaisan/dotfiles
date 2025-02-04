@@ -12,7 +12,7 @@ if command -v ufw &> /dev/null
 then
     echo "{{ .scriptPrefix }} Setting up UFW..."
     sudo ufw enable
-    sudo systemd enable ufw
+    sudo systemctl enable ufw
 fi
 
 # Setup no-root docker
