@@ -4,8 +4,8 @@ if [[ $XDG_CURRENT_DESKTOP == "Hyprland" ]]; then
     if [[ $REPLY =~ ^[Yy]$ ]] then
         echo "[CHEZMOI] Setting up Hyprland plugins..."
         hyprpm update
-        hyprpm add https://github.com/Duckonaut/split-monitor-workspaces # Add the plugin repository
-        hyprpm enable split-monitor-workspaces # Enable the plugin
+        hyprpm add https://github.com/shezdy/hyprsplit # Add the plugin repository
+        hyprpm enable hyprsplit # Enable the plugin
         hyprpm reload # Reload the plugins
 
         # Remove autoexecute

@@ -269,7 +269,8 @@
       "format": "<span foreground='#76e9a6'>  {}</span>",
       "format-ru": "RU",
       "format-en": "US",
-      "format-en-intl": "US INTL",
+    //   "format-en-intl": "US INTL",
+      "format-": "US INTL", // Workaround while variants get fixed
       "format-es": "ES",
       "tooltip": false
   },
@@ -283,34 +284,34 @@
   },
 
   "hyprland/workspaces": {
-      "all-outputs": false,
-      "format": "{icon}",
-      "format-icons": {
-          "1": "1  ",
-          "2": "2  ",
-          "3": "3  ",
-          "4": "4  ",
-          "5": "5  ",
-          "6": "6  ",
-          "7": "7  ",
-          "8": "8  ",
-          "9": "9  ",
-          "10": "10  ",
-          "11": "1  ",
-          "12": "2  ",
-          "13": "3  ",
-          "14": "4  ",
-          "15": "5  ",
-          "16": "6  ",
-          "17": "7  ",
-          "18": "8  ",
-          "19": "9  ",
-          "20": "10  "
-      },
-//   "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
-//   "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
-      "sort-by-number": true,
-      "active-only": true
+    "all-outputs": false,
+    "format": "{icon}",
+    "format-icons": {
+        "1": "1  ",
+        "2": "2  ",
+        "3": "3  ",
+        "4": "4  ",
+        "5": "5  ",
+        "6": "6  ",
+        "7": "7  ",
+        "8": "8  ",
+        "9": "9  ",
+        "10": "10  ",
+        "11": "1  ",
+        "12": "2  ",
+        "13": "3  ",
+        "14": "4  ",
+        "15": "5  ",
+        "16": "6  ",
+        "17": "7  ",
+        "18": "8  ",
+        "19": "9  ",
+        "20": "10  "
+    },
+    "on-scroll-up": "hyprctl dispatch split:workspace e+1 1>/dev/null",
+    "on-scroll-down": "hyprctl dispatch split:workspace e-1 1>/dev/null",
+    "sort-by-number": true,
+    "active-only": false
   },
 
   "custom/controls": {
