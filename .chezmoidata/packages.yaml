@@ -71,6 +71,7 @@ packages:
       - meson
       - ninja
       - rust
+      - rust-src
       - zig
       aur:
       # - nvm
