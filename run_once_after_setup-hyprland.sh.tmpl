@@ -3,13 +3,6 @@
 {{ if eq .localEnv.desktop "hyprland" -}}
 echo "{{ .scriptPrefix }} Setting up Hyprland..."
 
-# Enable Bluetooth
-if command -v bluetoothctl &> /dev/null
-then
-    echo "{{ .scriptPrefix }} Setting up Bluetooth..."
-    sudo systemctl enable bluetooth --now
-fi
-
 hyprctl setcursor Qogir 24
 
 

@@ -7,6 +7,13 @@ then
     bat cache --build
 fi
 
+# Enable Bluetooth
+if command -v bluetoothctl &> /dev/null
+then
+    echo "{{ .scriptPrefix }} Setting up Bluetooth..."
+    sudo systemctl enable bluetooth --now
+fi
+
 # Enable UFW
 if command -v ufw &> /dev/null
 then
