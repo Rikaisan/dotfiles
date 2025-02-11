@@ -34,3 +34,18 @@ alias loadnvm="source /usr/share/nvm/init-nvm.sh"
 alias lnvm=loadnvm
 
 alias dockerclean="docker images | tail +2 | awk '\$1 == \"<none>\" {print $3}' | xargs -r docker rmi -f"
+
+alias yazi='func_yaziwrap'
+func_yaziwrap() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	/usr/bin/yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+alias mkcd='func_mkcd'
+func_mkcd() {
+    mkdir -p $1 && cd $1
+}
