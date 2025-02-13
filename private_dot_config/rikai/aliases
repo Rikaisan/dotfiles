@@ -49,3 +49,10 @@ alias mkcd='func_mkcd'
 func_mkcd() {
     mkdir -p $1 && cd $1
 }
+
+alias mkname='func_mkname'
+func_mkname() {
+    file_name=$(echo "$*" | cut -d ' ' -f1- | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
+    mkdir -p $file_name && cd $file_name
+}
+
