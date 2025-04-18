@@ -12,3 +12,4 @@ fi
 if [[ -e ~/.config/rikai/custom ]]; then
   source ~/.config/rikai/custom
 fi
+export BROWSER=vivaldi
