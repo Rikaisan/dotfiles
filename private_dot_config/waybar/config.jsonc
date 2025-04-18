@@ -15,10 +15,10 @@
   "spacing": 1, // Gaps between modules (4px)
 
   "modules-left": [
-      "hyprland/window",
+      "hyprland/window"
       //"mpd"
-      "custom/media",
-      "custom/cava-internal"
+    //   "custom/media",
+    //   "custom/cava-internal"
   ],
   "modules-center": [
       "custom/weather",
