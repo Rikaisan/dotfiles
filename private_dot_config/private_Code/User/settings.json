@@ -31,6 +31,14 @@
     "pixelbyte.love2d.path": "/usr/bin/love",
     "zig.path": "zig",
     "zig.zls.path": "zls",
-    "zig.initialSetupDone": true,
-    "godotTools.editorPath.godot4": "/home/rikai/.local/share/godot-manager/versions/4.3-stable/Godot_v4.3-stable_linux.x86_64"
+    "godotTools.editorPath.godot4": "/home/rikai/.local/share/godot-manager/versions/4.3-stable/Godot_v4.3-stable_linux.x86_64",
+    "editor.stickyScroll.enabled": false,
+    "java.imports.gradle.wrapper.checksums": [
+        {
+            "sha256": "2c23278a62dc9f96ab11bee897d9f53e6479d6419135e4560ce822a6431df5e5",
+            "allowed": false
+        }
+    ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "mesonbuild.downloadLanguageServer": true
 }
