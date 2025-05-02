@@ -12,12 +12,11 @@ desktopPackages:
       - cmake
       - cpio
       - ffmpegthumbnailer
+      - gnome-calculator
       - gnome-font-viewer
       - grim
       - gvfs
-      - hyprcursor
       - hyprland
-      - hyprlang
       - hyprlock
       - hyprpaper
       - hyprwayland-scanner
@@ -48,11 +47,12 @@ desktopPackages:
       - xdg-desktop-portal-hyprland
       - xsensors
       aur:
+      - catppuccin-gtk-theme-mocha
+      - catppuccin-mocha-grub-theme-git
       - grimblast-git
       - mission-center
       - qview
       - selectdefaultapplication-git
       - ttf-material-symbols-variable-git
       - ttf-rubik-vf
-      # - vesktop
       - wlogout
