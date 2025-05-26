@@ -40,5 +40,7 @@
         }
     ],
     "diffEditor.ignoreTrimWhitespace": false,
-    "mesonbuild.downloadLanguageServer": true
+    "mesonbuild.downloadLanguageServer": true,
+    "telemetry.feedback.enabled": false,
+    "telemetry.telemetryLevel": "off"
 }
