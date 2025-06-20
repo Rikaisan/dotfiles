@@ -14,6 +14,7 @@ read -p "Do you want to install/replace the SDDM theme config? [y/N] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]] then
 echo "[HYPRLAND] Setting up SDDM..."
+sudo systemctl enable sddm.service
 sudo mkdir -p /etc/sddm.conf.d/
 sudo bash -c "echo \"[General]
 HaltCommand=/usr/bin/systemctl poweroff
