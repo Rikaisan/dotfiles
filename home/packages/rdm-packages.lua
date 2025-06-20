@@ -56,6 +56,8 @@ function InstallForArch()
     end
 end
 
-if OptionIsSet("arch") and not OptionIsSet("preview") then
-    InstallForArch()
+function RDM_Init()
+    if OptionIsSet("arch") and not OptionIsSet("preview") then
+        InstallForArch()
+    end
 end
