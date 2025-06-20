@@ -12,27 +12,12 @@ if ModuleIsSet("hyprland") then
     table.insert(categories, { "hyprland", false })
 end
 
-function InstallForArch()
-    local packageTypes = {
-     -- { name, command }
-        { "native",  "sudo pacman -S --needed --noconfirm" },
-        { "aur",     "yay -S --needed --noconfirm" },
-        { "flatpak", "flatpak install flathub" }
-    }
-
-    if not OptionIsSet("preview") then
-        ForceSpawn("install-yay.sh")
-    end
-
-    if not OptionIsSet("noupdate") then
-        os.execute("yay -Syu")
-    end
-
+function InstallPackages(distro, packageTypes)
     for _, category in ipairs(categories) do
         if not OptionIsSet("auto") then
             io.write("[" .. category[1] .. "]:")
             for _, packageType in ipairs(packageTypes) do
-                local list = Read("arch/" .. packageType[1] .. "/" .. category[1])
+                local list = Read(distro .. "/" .. packageType[1] .. "/" .. category[1])
                 if list ~= nil then
                     io.write(packageType[1] .. ":")
                     io.write(list)
@@ -59,7 +44,7 @@ function InstallForArch()
         end
 
         for _, packageType in ipairs(packageTypes) do
-            local list = Read("arch/" .. packageType[1] .. "/" .. category[1])
+            local list = Read(distro .. "/" .. packageType[1] .. "/" .. category[1])
             if list ~= nil then
                 list = list:gsub("\n", " ")
                 os.execute(packageType[2] .. " " .. list)
@@ -68,6 +53,25 @@ function InstallForArch()
 
         ::continue::
     end
+end
+
+function InstallForArch()
+    local packageTypes = {
+     -- { name, command }
+        { "native",  "sudo pacman -S --needed --noconfirm" },
+        { "aur",     "yay -S --needed --noconfirm" },
+        { "flatpak", "flatpak install flathub" }
+    }
+
+    if not OptionIsSet("preview") then
+        ForceSpawn("install-yay.sh")
+    end
+
+    if not OptionIsSet("noupdate") then
+        os.execute("yay -Syu")
+    end
+
+    InstallPackages("arch", packageTypes)
 end
 
 function RDM_Init()
