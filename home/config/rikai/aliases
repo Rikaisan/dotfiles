@@ -1,0 +1,58 @@
+alias ls="eza --icons=auto --color=auto"
+alias rls="/bin/ls"
+
+alias logs="docker ps --format '{{.Names}}' | fzf | docker logs -f"
+
+alias ytfzf="ytfzf -T kitty"
+alias dlmp3="yt-dlp -x --audio-format mp3"
+alias dlwav="yt-dlp -x --audio-format wav"
+alias dla="yt-dlp -x --audio-format"
+alias dlogg="func_download_ogg"
+func_download_ogg() {
+    file_name=$(echo "$*" | cut -d ' ' -f2- | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
+    yt-dlp -x --audio-format mp3 -o $file_name.mp3 $1
+    ffmpeg -i $file_name.mp3 $file_name.ogg
+    rm $file_name.mp3
+}
+
+alias cor="code -r"
+alias chr="code . -r"
+
+alias tmpd="cd $(mktemp -d)"
+
+alias watchlog='func_watchlog'
+func_watchlog() {
+    tail -f "$1" | bat -pp -l cclog
+}
+
+alias chwph='func_chwphyprland'
+func_chwphyprland() {
+    chwp $1 && $HOME/.config/hypr/scripts/reload_wallpapers.sh
+}
+
+alias loadnvm="source /usr/share/nvm/init-nvm.sh"
+alias lnvm=loadnvm
+
+alias dockerclean="docker images | tail +2 | awk '\$1 == \"<none>\" {print $3}' | xargs -r docker rmi -f"
+
+alias yazi='func_yaziwrap'
+func_yaziwrap() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	/usr/bin/yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+alias mkcd='func_mkcd'
+func_mkcd() {
+    mkdir -p $1 && cd $1
+}
+
+alias mkname='func_mkname'
+func_mkname() {
+    file_name=$(echo "$*" | cut -d ' ' -f1- | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
+    mkdir -p $file_name && cd $file_name
+}
+

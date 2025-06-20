@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon></icon>
+	<name>Open terminal here</name>
+	<submenu></submenu>
+	<unique-id>1718674303713089-1</unique-id>
+	<command>kitty %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>visualstudiocode</icon>
+	<name>Open in VS Code</name>
+	<submenu></submenu>
+	<unique-id>1719797664958302-1</unique-id>
+	<command>code %F</command>
+	<description>Open the current file/dir in Visual Studio Code</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>visualstudiocode</icon>
+	<name>Replace VS Code</name>
+	<submenu></submenu>
+	<unique-id>1719797703179832-2</unique-id>
+	<command>code %F -r</command>
+	<description>Replaces the current Visual Studio Code window</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+</actions>

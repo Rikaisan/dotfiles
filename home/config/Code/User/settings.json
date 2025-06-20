@@ -1,0 +1,46 @@
+{
+    "security.workspace.trust.enabled": false,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "editor.fontFamily": "'JetBrainsMonoNL NF', FontAwesome, Noto Sans, 'monospace', monospace",
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.fontSize": 12,
+    "explorer.confirmDelete": false,
+    "editor.matchBrackets": "never",
+    "editor.minimap.enabled": false,
+    "vscord.status.idle.check": false,
+    "vscord.status.idle.enabled": false,
+    "vscord.status.problems.enabled": false,
+    "vscord.status.details.text.notInFile": "Not in a file :c",
+    "vscord.status.state.idle.enabled": false,
+    "vscord.status.state.text.editing": "Working on {file_name}{file_extension}",
+    "git.autofetch": true,
+    "errorLens.enabled": false,
+    "files.associations": {
+        "*.sh.tmpl": "shellscript",
+        "*conf.tmpl": "properties"
+    },
+    "todo-tree.regex.regex": "(--|//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "cmake.showOptionsMovedNotification": false,
+    "pixelbyte.love2d.path": "/usr/bin/love",
+    "zig.path": "zig",
+    "zig.zls.path": "zls",
+    "godotTools.editorPath.godot4": "/home/rikai/.local/share/godot-manager/versions/4.3-stable/Godot_v4.3-stable_linux.x86_64",
+    "editor.stickyScroll.enabled": false,
+    "java.imports.gradle.wrapper.checksums": [
+        {
+            "sha256": "2c23278a62dc9f96ab11bee897d9f53e6479d6419135e4560ce822a6431df5e5",
+            "allowed": false
+        }
+    ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "mesonbuild.downloadLanguageServer": true,
+    "telemetry.feedback.enabled": false,
+    "telemetry.telemetryLevel": "off"
+}

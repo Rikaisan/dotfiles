@@ -1,0 +1,10 @@
+clang
+cmake
+cpio
+docker
+docker-compose
+glfw
+meson
+ninja
+rustup
+zig

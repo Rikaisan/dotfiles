@@ -1,0 +1,4 @@
+[[manager.prepend_keymap]]
+on = [ "|" ]
+run = 'shell --block "chwp $0 && $HOME/.config/hypr/scripts/reload_wallpapers.sh"'
+desc = "Set the wallpaper to the hovered file"

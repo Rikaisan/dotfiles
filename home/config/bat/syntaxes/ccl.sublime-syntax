@@ -1,0 +1,22 @@
+%YAML 1.2
+---
+name: cclog
+file_extensions: [cc, ccl, rl, rcc]
+scope: text
+
+contexts:
+  main:
+    - match: \[(DEBUG)\]
+      scope: keyword.debug
+
+    - match: \[(ERROR)\]
+      scope: keyword.error
+
+    - match: \[(WARN)\]
+      scope: keyword.warn
+
+    - match: \[(INFO)\]
+      scope: keyword.info
+
+    - match: \[.*?\]
+      scope: keyword.other

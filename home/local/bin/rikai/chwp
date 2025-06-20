@@ -1,0 +1,12 @@
+#/bin/bash
+
+WPDIR=$HOME/Pictures/wallpapers
+
+if (( $# > 0 )) then
+    FILE=$(realpath $1)
+    rm $WPDIR/wallpaper1
+    rm $WPDIR/wallpaper2
+
+    ln -s $FILE $WPDIR/wallpaper1
+    ln -s $FILE $WPDIR/wallpaper2
+fi
