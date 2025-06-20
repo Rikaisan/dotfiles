@@ -29,17 +29,23 @@ function InstallForArch()
     end
 
     for _, category in ipairs(categories) do
-        io.write("Would you like to install " .. category[1] .. "? [" .. (category[2] and "Y/n" or "y/N") .. "] ")
-        local answer = io.read()
-        answer = answer:lower()
-        answer = answer:gsub("%s", "")
-        answer = answer:gsub("%c", "")
-        if category[2] then
-            if answer:sub(1,1) == "n" then
-                goto continue
+        if not OptionIsSet("auto") then
+            io.write("Would you like to install " .. category[1] .. "? [" .. (category[2] and "Y/n" or "y/N") .. "] ")
+            local answer = io.read()
+            answer = answer:lower()
+            answer = answer:gsub("%s", "")
+            answer = answer:gsub("%c", "")
+            if category[2] then
+                if answer:sub(1,1) == "n" then
+                    goto continue
+                end
+            else
+                if answer:sub(1,1) ~= "y" then
+                    goto continue
+                end
             end
         else
-            if answer:sub(1,1) ~= "y" then
+            if not category[2] then
                 goto continue
             end
         end
