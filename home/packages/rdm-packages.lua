@@ -30,6 +30,14 @@ function InstallForArch()
 
     for _, category in ipairs(categories) do
         if not OptionIsSet("auto") then
+            io.write("[" .. category[1] .. "]:")
+            for _, packageType in ipairs(packageTypes) do
+                local list = Read("arch/" .. packageType[1] .. "/" .. category[1])
+                if list ~= nil then
+                    io.write(packageType[1] .. ":")
+                    io.write(list)
+                end
+            end
             io.write("Would you like to install " .. category[1] .. "? [" .. (category[2] and "Y/n" or "y/N") .. "] ")
             local answer = io.read()
             answer = answer:lower()
