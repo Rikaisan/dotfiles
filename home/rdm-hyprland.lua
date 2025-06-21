@@ -4,6 +4,7 @@ end
 
 function RDM_GetFiles()
     local returnedFiles = {
+        [".local/share/icons/Tela-dark"] = Directory("local/share/icons/Tela-dark"),
         [".config"] = Directory("hypr_configs"),
         [".local/bin/rikai/chwp"] = File("local/bin/rikai/chwp"),
         [".gtkrc-2.0"] = File(".gtkrc-2.0"),
