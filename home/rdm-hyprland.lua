@@ -9,7 +9,7 @@ function RDM_GetFiles()
         [".gtkrc-2.0"] = File(".gtkrc-2.0"),
     }
 
-    if not OptionIsSet("nassets") then
+    if not FlagIsSet("nassets") then
         returnedFiles[".local/share/icons/Tela"] = Directory("local/share/icons/Tela")
         returnedFiles[".local/share/icons/Tela-dark"] = Directory("local/share/icons/Tela-dark")
     end
@@ -30,7 +30,7 @@ function RDM_GetFiles()
 end
 
 function RDM_Delayed()
-    if ModuleIsSet("setup") and not OptionIsSet("preview") then
+    if ModuleIsSet("setup") and not FlagIsSet("preview") then
         ForceSpawn("setup-hyprland.sh")
     end
 end

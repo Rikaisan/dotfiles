@@ -14,7 +14,7 @@ end
 
 function InstallPackages(distro, packageTypes)
     for _, category in ipairs(categories) do
-        if not OptionIsSet("auto") then
+        if not FlagIsSet("auto") then
             io.write("[" .. category[1] .. "]:")
             for _, packageType in ipairs(packageTypes) do
                 local list = Read(distro .. "/" .. packageType[1] .. "/" .. category[1])
@@ -63,11 +63,11 @@ function InstallForArch()
         { "flatpak", "flatpak install flathub" }
     }
 
-    if not OptionIsSet("preview") then
+    if not FlagIsSet("preview") then
         ForceSpawn("install-yay.sh")
     end
 
-    if not OptionIsSet("noupdate") then
+    if not FlagIsSet("noupdate") then
         os.execute("yay -Syu")
     end
 
@@ -75,7 +75,7 @@ function InstallForArch()
 end
 
 function RDM_Init()
-    if OptionIsSet("arch") and not OptionIsSet("preview") then
+    if FlagIsSet("arch") and not FlagIsSet("preview") then
         InstallForArch()
     end
 end
