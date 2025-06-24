@@ -56,3 +56,13 @@ func_mkname() {
     mkdir -p $file_name && cd $file_name
 }
 
+alias ani-dl='func_ani-dl'
+func_ani-dl() {
+	ani-cli -d -e 1-1 $*
+}
+
+alias anidir='func_anidir'
+func_anidir() {
+	mkname $*
+	ani-dl $*
+}
