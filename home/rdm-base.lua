@@ -1,8 +1,9 @@
 function RDM_GetFiles()
     local returnedFiles = {
         [".config/bat"] = Directory("config/bat"),
-        [".config/neofetch"] = Directory("config/neofetch"),
         [".config/Code"] = Directory("config/Code"),
+        [".config/fontconfig"] = Directory("config/fontconfig"),
+        [".config/neofetch"] = Directory("config/neofetch"),
         [".config/rikai/aliases"] = File("config/rikai/aliases"),
     }
 
