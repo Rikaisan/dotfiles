@@ -269,8 +269,8 @@
       "format": "<span foreground='#76e9a6'>  {}</span>",
       "format-ru": "RU",
       "format-en": "US",
-    //   "format-en-intl": "US INTL",
-      "format-": "US INTL", // Workaround while variants get fixed
+      "format-en-intl": "US INTL",
+    //   "format-": "US INTL", // Workaround while variants get fixed
       "format-es": "ES",
       "tooltip": false
   },
