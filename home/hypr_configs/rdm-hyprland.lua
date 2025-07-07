@@ -4,18 +4,15 @@ end
 
 function RDM_GetFiles()
     local returnedFiles = {
-        [".config"] = Directory("hypr_configs"),
-        [".local/bin/rikai/chwp"] = File("local/bin/rikai/chwp"),
-        [".gtkrc-2.0"] = File(".gtkrc-2.0"),
+        [""] = Directory("plain"),
     }
 
     if not FlagIsSet("nassets") then
-        returnedFiles[".local/share/icons/Tela"] = Directory("local/share/icons/Tela")
-        returnedFiles[".local/share/icons/Tela-dark"] = Directory("local/share/icons/Tela-dark")
+        returnedFiles[".local/share/icons"] = Directory("custom/local/share/icons")
     end
 
     local function addCustomHyprConfig(path)
-        local cfg = Read("config/hypr/" .. path)
+        local cfg = Read("custom/config/hypr/" .. path)
         cfg = removeSection(cfg, FlagIsSet("laptop") and "desktop" or "laptop")
         cfg = removeSection(cfg, FlagIsSet("es") and "en" or "es")
         returnedFiles[".config/hypr/" .. path] = cfg
@@ -32,5 +29,10 @@ end
 function RDM_Delayed()
     if ModuleIsSet("setup") and not FlagIsSet("preview") then
         ForceSpawn("setup-hyprland.sh")
+    end
+
+    if not ModuleIsSet("preview") then
+        os.execute("chmod -R +x $HOME/.config/hypr/scripts")
+        os.execute("chmod -R +x $HOME/.config/waybar")
     end
 end
