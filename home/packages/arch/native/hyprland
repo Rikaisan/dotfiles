@@ -21,6 +21,7 @@ meson
 network-manager-applet
 ninja
 nwg-look
+pamixer
 picom
 pipewire
 pipewire-alsa
@@ -46,4 +47,5 @@ wofi
 xarchiver
 xdg-desktop-portal
 xdg-desktop-portal-hyprland
+xorg-xbacklight
 xsensors
