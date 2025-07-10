@@ -84,6 +84,20 @@
       "on-click": "gsimplecal"
   },
 
+  "clock": {
+      "format": "  {:%H:%M    %e %b}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "today-format": "<b>{}</b>"
+  },
+
+  "clock#date": {
+      //"format": "  {:%H:%M, %e %b}",
+      "format": " {:%I:%M %p, %d %B (%a)}",
+      "tooltip-format": "<tt><big>{calendar}</big></tt>",
+      "today-format": "<big>{}</big>",
+      "on-click": "gsimplecal"
+  },
+
   "temperature": {
       "interval": 4,
       "critical-threshold": 80,
@@ -97,14 +111,14 @@
 
   "memory": {
       "interval": 3,
-      "format": "  {used:0.2f} / 16 GiB",
+      "format": " {used:0.2f} / 16 GiB",
       "on-click": "missioncenter"
   },
 
   "cpu": {
     "interval": 1,
     //"format": " {}%", // Icon: microchip
-    "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
+    "format": " {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
     "max-length": 16,
     "min-length": 13,
     "on-click": "missioncenter"
@@ -142,7 +156,7 @@
       "interval": 10
   },
   "custom/storage": {
-      "format": "  {} left / 64G",
+      "format": " {} left / 64G",
       "format-alt": "{percentage}% ",
       "format-alt-click": "click-right",
       "return-type": "json",
@@ -172,7 +186,7 @@
       "format-alt": "{alt}: {}",
       "format-alt-click": "click-right",
       "interval": 3600,
-      "exec": "curl -s 'https://wttr.in/?format=1'",
+      "exec": "curl -s 'https://wttr.in/?format=1' | cut --delimiter ' ' -f 1,4",
       //"return-type": "json",
       //"exec": "~/.config/waybar/modules/weather.sh",
       "exec-if": "ping wttr.in -c1",
@@ -208,7 +222,7 @@
   // },
   
   "custom/cava-internal": {
-      "format": "  {}",
+      "format": " {}",
       "exec": "cava -p ~/.config/cava/config1 | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'",
       "tooltip":false
   },
@@ -217,19 +231,6 @@
       "format": "<span foreground='#ff6b6b'> </span>",
       "tooltip": false,
       "on-click": "wlogout"
-  },
-
-  "clock": {
-      "format": "  {:%H:%M    %e %b}",
-      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-      "today-format": "<b>{}</b>"
-  },
-
-  "clock#date": {
-      //"format": "  {:%H:%M, %e %b}",
-      "format": "  {:%I:%M %p, %d %B (%a)}",
-      "tooltip-format": "<tt><big>{calendar}</big></tt>",
-      "today-format": "<big>{}</big>"
   },
 
   "custom/gammastep": {
@@ -266,8 +267,7 @@
   },
 
   "hyprland/language": {
-      "format": "<span foreground='#76e9a6'>  {}</span>",
-      "format-ru": "RU",
+      "format": "<span foreground='#76e9a6'> {}</span>",
       "format-en": "US",
       "format-en-intl": "US INTL",
     //   "format-": "US INTL", // Workaround while variants get fixed
