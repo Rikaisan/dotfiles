@@ -32,7 +32,7 @@ function RDM_Delayed()
     end
 
     -- HACK: Hack to add exec perms while RDM doesn't have a way to do it
-    if not ModuleIsSet("preview") then
+    if not FlagIsSet("preview") then
         os.execute("chmod -R +x $HOME/.config/hypr/scripts")
         os.execute("chmod -R +x $HOME/.config/waybar")
         os.execute("chmod +x $HOME/.local/bin/chwp")
