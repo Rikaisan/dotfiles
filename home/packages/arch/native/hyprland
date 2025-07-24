@@ -4,6 +4,7 @@ bluez-utils
 breeze
 breeze-gtk
 breeze-icons
+brightnessctl
 cliphist
 cmake
 cpio
@@ -48,5 +49,4 @@ wofi
 xarchiver
 xdg-desktop-portal
 xdg-desktop-portal-hyprland
-xorg-xbacklight
 xsensors

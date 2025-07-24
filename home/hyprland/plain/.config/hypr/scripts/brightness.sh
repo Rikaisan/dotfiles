@@ -4,8 +4,10 @@ iDIR="$HOME/.config/hypr/icons"
 
 # Get brightness
 get_backlight() {
-	LIGHT=$(printf "%.0f\n" $(xbacklight -get))
-	echo "${LIGHT}%"
+	CURRENT=$(printf "%.0f\n" $(brightnessctl g))
+	MAX=$(printf "%.0f\n" $(brightnessctl m))
+	PERCENTAGE=$((CURRENT * 100 / $MAX))
+	echo "${PERCENTAGE}%"
 }
 
 # Get icons
@@ -32,12 +34,12 @@ notify_user() {
 
 # Increase brightness
 inc_backlight() {
-	xbacklight -inc 5 && get_icon && notify_user
+	brightnessctl s +10% && get_icon && notify_user
 }
 
 # Decrease brightness
 dec_backlight() {
-	xbacklight -dec 5 && get_icon && notify_user
+	brightnessctl s 10%- && get_icon && notify_user
 }
 
 # Execute accordingly
