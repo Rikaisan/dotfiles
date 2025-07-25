@@ -4,7 +4,7 @@ end
 
 function RDM_GetFiles()
     local returnedFiles = {
-        [""] = Directory("plain"),
+        [""] = Directory("static"),
     }
 
     if not FlagIsSet("nassets") then
