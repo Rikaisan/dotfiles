@@ -70,7 +70,7 @@ func_anidir() {
 alias tomov=func_tomov
 func_tomov() {
 	local profile=${2-1}
-	local default_outname=${1$.*}.mov
+	local default_outname=${1%.*}.mov
 	local outname=${3-$default_outname}
 	ffmpeg -i $1 -c:v dnxhd -profile:v $profile -c:a pcm_s16le $outname
 }
