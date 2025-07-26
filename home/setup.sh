@@ -34,7 +34,7 @@ if command -v docker &> /dev/null
 then
     echo "[SETUP] Configuring Docker..."
     sudo groupadd docker
-    sudo usermod -aG docker {{ .chezmoi.username }}
+    sudo usermod -aG docker $USER
     sudo systemctl enable docker --now
 fi
 
@@ -48,12 +48,11 @@ then
     sudo sed -i "s/#unix_sock_group/unix_sock_group/" /etc/libvirt/libvirtd.conf
     sudo sed -i "s/#unix_sock_rw_perms/unix_sock_rw_perms/" /etc/libvirt/libvirtd.conf
 
-    sudo usermod -aG libvirt {{ .chezmoi.username }}
+    sudo usermod -aG libvirt $USER
 
     sudo systemctl enable libvirtd.socket --now
 fi
 
-{{ if eq .chezmoi.osRelease.id "endeavouros" }}
 read -p "[SETUP] Do you want to run nvidia-inst?[y/N] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -61,7 +60,6 @@ then
     echo "[SETUP] Setting up NVIDIA..."
     nvidia-inst
 fi
-{{ end }}
 
 if command -v envycontrol &> /dev/null
 then
