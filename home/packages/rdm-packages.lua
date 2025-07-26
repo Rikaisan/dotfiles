@@ -5,11 +5,11 @@ local categories = {
    { "extra",       true },
    { "gaming",      false },
 }
-if FlagIsSet("nvidia") then
-    table.insert(categories, { "nvidia", false })
+if IsSet("nvidia") then
+    table.insert(categories, { "nvidia", true })
 end
-if ModuleIsSet("hyprland") then
-    table.insert(categories, { "hyprland", false })
+if IsSet("hyprland") then
+    table.insert(categories, { "hyprland", true })
 end
 
 function InstallPackages(distro, packageTypes)
@@ -63,7 +63,7 @@ function InstallForArch()
         { "flatpak", "flatpak install flathub" }
     }
 
-    if not FlagIsSet("preview") then
+    if not IsPreview() then
         ForceSpawn("install-yay.sh")
     end
 
@@ -75,7 +75,7 @@ function InstallForArch()
 end
 
 function RDM_Init()
-    if FlagIsSet("arch") and not FlagIsSet("preview") then
+    if FlagIsSet("arch") and not IsPreview() then
         InstallForArch()
     end
 end

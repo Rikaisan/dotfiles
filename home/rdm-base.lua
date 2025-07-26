@@ -13,7 +13,7 @@ function RDM_GetFiles()
     end
 
     -- Yazi
-    if ModuleIsSet("hyprland") then
+    if IsSet("hyprland") then
         returnedFiles[".config/yazi/keymap.toml"] = File("config/yazi/keymap.toml")
     end
 

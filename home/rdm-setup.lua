@@ -1,5 +1,5 @@
 function RDM_Delayed()
-    if not FlagIsSet("preview") then
+    if not IsPreview() then
         ForceSpawn("setup.sh")
     end
 end

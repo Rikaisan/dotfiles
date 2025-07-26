@@ -9,7 +9,7 @@ function RDM_GetFiles()
     end
 
     local zshrc = Read(".zshrc")
-    if not ModuleIsSet("hyprland") then
+    if not IsSet("hyprland") then
         zshrc = removeSection(zshrc, "hypr")
     end
 
@@ -22,7 +22,7 @@ function RDM_GetFiles()
 end
 
 function RDM_Delayed()
-    if not FlagIsSet("preview") then
+    if not IsPreview() then
         ForceSpawn("install-ohmyzsh.sh")
     end
 end
