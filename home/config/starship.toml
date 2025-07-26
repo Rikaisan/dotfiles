@@ -45,6 +45,7 @@ disabled = false # Disabled by default
 Manjaro = "[♥](bold bg:#7d41eb) "
 Arch = "[󰣐](bg:#7d41eb) "
 EndeavourOS = "[󰣐](bg:#7d41eb) "
+CachyOS = "[󰣐](bg:#7d41eb) "
 
 [directory]
 style = "bg:#8e5cf2"
