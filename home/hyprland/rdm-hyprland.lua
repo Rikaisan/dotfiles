@@ -19,6 +19,7 @@ function RDM_GetFiles()
     end
 
     addCustomHyprConfig("scripts/reload_wallpapers.sh")
+    addCustomHyprConfig("modules/autostart.conf")
     addCustomHyprConfig("modules/monitors.conf")
     addCustomHyprConfig("modules/input.conf")
     addCustomHyprConfig("hyprpaper.conf")
