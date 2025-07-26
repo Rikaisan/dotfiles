@@ -9,7 +9,7 @@ alias dlwav="yt-dlp -x --audio-format wav"
 alias dla="yt-dlp -x --audio-format"
 alias dlogg="func_download_ogg"
 func_download_ogg() {
-    file_name=$(echo "$*" | cut -d ' ' -f2- | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
+    local file_name=$(echo "$*" | cut -d ' ' -f2- | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
     yt-dlp -x --audio-format mp3 -o $file_name.mp3 $1
     ffmpeg -i $file_name.mp3 $file_name.ogg
     rm $file_name.mp3
@@ -52,7 +52,7 @@ func_mkcd() {
 
 alias mkname='func_mkname'
 func_mkname() {
-    file_name=$(echo "$*" | cut -d ' ' -f1- | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
+    local file_name=$(echo "$*" | cut -d ' ' -f1- | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
     mkdir -p $file_name && cd $file_name
 }
 
@@ -65,4 +65,12 @@ alias anidir='func_anidir'
 func_anidir() {
 	mkname $*
 	ani-dl $*
+}
+
+alias tomov=func_tomov
+func_tomov() {
+	local profile=${2-1}
+	local default_outname=${1$.*}.mov
+	local outname=${3-$default_outname}
+	ffmpeg -i $1 -c:v dnxhd -profile:v $profile -c:a pcm_s16le $outname
 }
