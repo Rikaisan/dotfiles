@@ -7,6 +7,13 @@ then
     bat cache --build
 fi
 
+# Update tealdeer db
+if command -v tldr &> /dev/null
+then
+    echo "[SETUP] Fetching tldr DB..."
+    tldr --update
+fi
+
 # Enable Bluetooth
 if command -v bluetoothctl &> /dev/null
 then
