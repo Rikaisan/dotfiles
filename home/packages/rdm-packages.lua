@@ -15,12 +15,13 @@ end
 function InstallPackages(distro, packageTypes)
     for _, category in ipairs(categories) do
         if not FlagIsSet("auto") then
-            io.write("[" .. category[1] .. "]:")
+            io.write("[" .. category[1] .. "]:\n")
             for _, packageType in ipairs(packageTypes) do
                 local list = Read(distro .. "/" .. packageType[1] .. "/" .. category[1])
                 if list ~= nil then
-                    io.write(packageType[1] .. ":")
+                    io.write("+--- " .. packageType[1] .. " ---+\n")
                     io.write(list)
+                    io.write("\n")
                 end
             end
             io.write("Would you like to install " .. category[1] .. "? [" .. (category[2] and "Y/n" or "y/N") .. "] ")
@@ -59,12 +60,16 @@ function InstallForArch()
     local packageTypes = {
      -- { name, command }
         { "native",  "sudo pacman -S --needed" },
-        { "aur",     "yay -S --needed" },
+        { "aur",     (IsSet("paru") and "paru" or "yay") .. " -S --needed" },
         { "flatpak", "flatpak install flathub" }
     }
 
     if not IsPreview() then
-        ForceSpawn("install-yay.sh")
+        if IsSet("paru") then
+            ForceSpawn("install-paru.sh")
+        else
+            ForceSpawn("install-yay.sh")
+        end
     end
 
     if not FlagIsSet("noupdate") then
