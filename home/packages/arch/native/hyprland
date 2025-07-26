@@ -29,7 +29,7 @@ pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
-polkit-kde-agent
+polkit-gnome
 qqc2-breeze-style
 qt5-wayland
 qt6-wayland
