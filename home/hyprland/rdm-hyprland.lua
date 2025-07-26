@@ -35,6 +35,6 @@ function RDM_Delayed()
     if not FlagIsSet("preview") then
         os.execute("chmod -R +x $HOME/.config/hypr/scripts")
         os.execute("chmod -R +x $HOME/.config/waybar")
-        os.execute("chmod +x $HOME/.local/bin/chwp")
+        os.execute("chmod +x $HOME/.local/bin/rikai/chwp")
     end
 end
