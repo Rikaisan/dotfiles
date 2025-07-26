@@ -1,6 +1,7 @@
 * {
-    font-family: "JetBrainsMonoNerdFont", monospace;
-    font-weight: 600;
+    /* font-family: "JetBrainsMonoNerdFont", monospace; */
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
 }
 
 window {
