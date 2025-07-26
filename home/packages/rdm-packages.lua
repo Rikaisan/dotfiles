@@ -58,8 +58,8 @@ end
 function InstallForArch()
     local packageTypes = {
      -- { name, command }
-        { "native",  "sudo pacman -S --needed --noconfirm" },
-        { "aur",     "yay -S --needed --noconfirm" },
+        { "native",  "sudo pacman -S --needed" },
+        { "aur",     "yay -S --needed" },
         { "flatpak", "flatpak install flathub" }
     }
 
