@@ -60,9 +60,11 @@ function InstallForArch()
     local packageTypes = {
      -- { name, command }
         { "native",  "sudo pacman -S --needed" },
-        { "aur",     (IsSet("paru") and "paru" or "yay") .. " -S --needed" },
         { "flatpak", "flatpak install flathub" }
     }
+    if not FlagIsSet("noaur") and not FlagIsSet("naur") then
+        table.insert(packageTypes, { "aur",     (IsSet("paru") and "paru" or "yay") .. " -S --needed" })
+    end
 
     if not IsPreview() then
         if IsSet("paru") then
@@ -72,7 +74,7 @@ function InstallForArch()
         end
     end
 
-    if not FlagIsSet("noupdate") then
+    if not FlagIsSet("noupdate") and not FlagIsSet("noup") then
         os.execute("yay -Syu")
     end
 
