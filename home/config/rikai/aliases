@@ -74,3 +74,9 @@ func_tomov() {
 	local outname=${3-$default_outname}
 	ffmpeg -i $1 -c:v dnxhd -profile:v $profile -c:a pcm_s16le $outname
 }
+
+alias burnsubs=func_burnsubs
+func_burnsubs() {
+	local outname=${1%.*}.mp4
+	ffmpeg -i $1 -vf "subtitles='$1'" $outname
+}
