@@ -2,23 +2,30 @@ local function removeSection(text, tag)
     return text:gsub("#~" .. tag ..".*#~end%-" .. tag, "")
 end
 
+function RDM_AddModules()
+    return { "wallpapers", "fonts", "term", "waybar", "wofi" }
+end
+
 function RDM_GetFiles()
     local returnedFiles = {
-        [""] = Directory("static"),
+        [""] = Directory("static"):exec("+(*.sh|chwp)") -- Since keys are relative to home, an empty string as the key means the root of the user home.
     }
 
     if not FlagIsSet("nassets") then
         returnedFiles[".local/share/icons"] = Directory("custom/local/share/icons")
     end
 
-    local function addCustomHyprConfig(path)
+    local function addCustomHyprConfig(path, executable)
         local cfg = Read("custom/config/hypr/" .. path)
         cfg = removeSection(cfg, FlagIsSet("laptop") and "desktop" or "laptop")
         cfg = removeSection(cfg, FlagIsSet("es") and "en" or "es")
+        if executable then
+            cfg = cfg:exec()
+        end
         returnedFiles[".config/hypr/" .. path] = cfg
     end
 
-    addCustomHyprConfig("scripts/reload_wallpapers.sh")
+    addCustomHyprConfig("scripts/reload_wallpapers.sh", true)
     addCustomHyprConfig("modules/workspaces.conf")
     addCustomHyprConfig("modules/autostart.conf")
     addCustomHyprConfig("modules/monitors.conf")
@@ -29,14 +36,7 @@ function RDM_GetFiles()
 end
 
 function RDM_Delayed()
-    if IsSet("setup") and not IsPreview() then
+    if not IsPreview() and IsSet("setup") then
         ForceSpawn("setup-hyprland.sh")
-    end
-
-    -- HACK: Hack to add exec perms while RDM doesn't have a way to do it
-    if not IsPreview() then
-        os.execute("chmod -R +x $HOME/.config/hypr/scripts")
-        os.execute("chmod -R +x $HOME/.config/waybar")
-        os.execute("chmod +x $HOME/.local/bin/rikai/chwp")
     end
 end
