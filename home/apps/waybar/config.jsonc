@@ -229,7 +229,7 @@
   },
 
   "custom/power": {
-      "format": "<span foreground='#ff6b6b'> </span>",
+      "format": "<span foreground='#ff6b6b'> </span>",
       "tooltip": false,
       "on-click": "wlogout"
   },
