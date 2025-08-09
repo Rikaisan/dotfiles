@@ -5,3 +5,9 @@ function RDM_AddModules()
     end
     return extraModules
 end
+
+function RDM_GetFiles()
+    return {
+        [".config/rikai/aliases"] = File("config/rikai/aliases")
+    }
+end

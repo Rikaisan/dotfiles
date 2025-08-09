@@ -5,11 +5,17 @@ local categories = {
    { "extra",       true },
    { "gaming",      false },
 }
+
 if IsSet("nvidia") then
     table.insert(categories, { "nvidia", true })
 end
+
 if IsSet("hyprland") then
     table.insert(categories, { "hyprland", true })
+end
+
+if IsSet("audio") or IsSet("desktop") then
+    table.insert(categories, { "audio", true })
 end
 
 function InstallPackages(distro, packageTypes)
