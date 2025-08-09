@@ -3,12 +3,12 @@ local function removeSection(text, tag)
 end
 
 function RDM_GetFiles()
-    local zshenv = Read(".zshenv")
+    local zshenv = Read("zsh/.zshenv")
     if not FlagIsSet("vivaldi") then
         zshenv = removeSection(zshenv, "vivaldi")
     end
 
-    local zshrc = Read(".zshrc")
+    local zshrc = Read("zsh/.zshrc")
     if not IsSet("hyprland") then
         zshrc = removeSection(zshrc, "hypr")
     end
@@ -21,6 +21,6 @@ end
 
 function RDM_Delayed()
     if not IsPreview() and IsSet("setup") then
-        ForceSpawn("install-ohmyzsh.sh")
+        ForceSpawn("zsh/install-ohmyzsh.sh")
     end
 end
