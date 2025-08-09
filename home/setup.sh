@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Rebuild bat cache
-if command -v bat &> /dev/null
-then
-    echo "[SETUP] Rebuilding Bat cache..."
-    bat cache --build
-fi
-
 # Update tealdeer db
 if command -v tldr &> /dev/null
 then
