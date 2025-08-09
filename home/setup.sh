@@ -45,7 +45,7 @@ then
     sudo systemctl enable docker --now
 fi
 
-
+# TODO: Move this to its own module?
 read -p "[SETUP] Do you want to setup KVM/QEMU for virtualization?[y/N] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
