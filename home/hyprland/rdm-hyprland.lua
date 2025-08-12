@@ -3,7 +3,11 @@ local function removeSection(text, tag)
 end
 
 function RDM_AddModules()
-    return { "wallpapers", "fonts", "term", "waybar", "wofi" }
+    local extraModules = { "fonts", "term", "waybar", "wofi" }
+    if IsSet("assets") then
+        table.insert(extraModules, "wallpapers")
+    end
+    return extraModules
 end
 
 function RDM_GetFiles()
@@ -11,7 +15,7 @@ function RDM_GetFiles()
         [""] = Directory("static"):exec("+(*.sh|chwp)") -- Since keys are relative to home, an empty string as the key means the root of the user home.
     }
 
-    if not FlagIsSet("nassets") then
+    if IsSet("assets") then
         returnedFiles[".local/share/icons"] = Directory("custom/local/share/icons")
     end
 

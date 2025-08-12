@@ -9,7 +9,7 @@ function RDM_GetFiles()
     end
 
     local zshrc = Read("zsh/.zshrc")
-    if not IsSet("hyprland") then
+    if not IsSet("hyprland") and not IsSet("setup") then
         zshrc = removeSection(zshrc, "hypr")
     end
 
