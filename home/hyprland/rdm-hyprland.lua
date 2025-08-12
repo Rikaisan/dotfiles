@@ -33,6 +33,7 @@ function RDM_GetFiles()
     addCustomHyprConfig("modules/workspaces.conf")
     addCustomHyprConfig("modules/autostart.conf")
     addCustomHyprConfig("modules/monitors.conf")
+    addCustomHyprConfig("modules/keymap.conf")
     addCustomHyprConfig("modules/input.conf")
     addCustomHyprConfig("hyprpaper.conf")
 
