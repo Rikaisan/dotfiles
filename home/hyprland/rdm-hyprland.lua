@@ -7,7 +7,7 @@ function RDM_AddModules()
     if IsSet("assets") then
         table.insert(extraModules, "wallpapers")
     end
-    return extraModules
+    return IsSet("extras") and extraModules or {}
 end
 
 function RDM_GetFiles()
