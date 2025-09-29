@@ -274,7 +274,7 @@
     //   "format-": "US INTL", // Workaround while variants get fixed
       "format-es": "ES",
       "tooltip": false,
-      "on-click": "hyprctl switchxkblayout $(hyprctl devices | grep 'main: yes' -B 5 | head -n 1 | awk '{print $1}') next"
+      "on-click": "hyprctl switchxkblayout $(hyprctl devices | grep 'main: yes' -B 6 | head -n 1 | awk '{print $1}') next"
   },
 
   "custom/title#name": {
