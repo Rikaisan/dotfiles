@@ -34,6 +34,10 @@ alias loadnvm="source /usr/share/nvm/init-nvm.sh"
 alias lnvm=loadnvm
 
 alias dockerclean="docker images | tail +2 | awk '\$1 == \"<none>\" {print $3}' | xargs -r docker rmi -f"
+alias dockerrmi='func_dockerrmi'
+func_dockerrmi() {
+	docker images | tail +2 | awk '\$1 == "$1" {print \$3}' | xargs -r docker rmi -f
+}
 
 alias yazi='func_yaziwrap'
 func_yaziwrap() {
@@ -79,4 +83,11 @@ alias burnsubs=func_burnsubs
 func_burnsubs() {
 	local outname=${1%.*}.mp4
 	ffmpeg -i $1 -vf "subtitles='$1'" $outname
+}
+
+alias seasonize=func_seasonize
+func_seasonize() {
+	local season=${1-1}
+	local season_string=S${season}E
+	for f in *; do mv -v $f ${f/* Episode /${season_string}}; done
 }
