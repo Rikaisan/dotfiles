@@ -24,6 +24,6 @@ sudo bash -c "echo \"[General]
 HaltCommand=/usr/bin/systemctl poweroff
 RebootCommand=/usr/bin/systemctl reboot
 [Theme]
-Current=catppuccin-mocha
+Current=catppuccin-mocha-mauve
 Font=Noto Sans,10,-1,0,400,0,0,0,0,0,0,0,0,0,0,1\" > /etc/sddm.conf.d/theme.conf"
 fi
