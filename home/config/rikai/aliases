@@ -97,3 +97,15 @@ func_fixrgba() {
 	mv "$1" "$1.old"
 	magick "$1.old" -channel rgba -fx "u*a" "$1"
 }
+
+alias touchcpp=func_touchcpp
+func_touchcpp() {
+	echo "#pragma once\n" >> $1.hpp
+	echo "#include \"$1.hpp\"\n" >> $1.cpp
+}
+
+alias touchc=func_touchc
+func_touchc() {
+	echo "#pragma once\n" >> $1.h
+	echo "#include \"$1.h\"\n" >> $1.c
+}
