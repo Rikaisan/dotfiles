@@ -44,6 +44,10 @@
   window#waybar.hidden {
     opacity: 0;
   }
+
+  window#waybar.empty #window {
+    opacity: 0;
+  }
   
   #workspaces button {
     padding: 2px;

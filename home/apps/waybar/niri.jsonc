@@ -1,0 +1,381 @@
+{
+  // -------------------------------------------------------------------------
+  // Global configuration
+  // -------------------------------------------------------------------------
+
+  "layer": "top",
+
+  "position": "top",
+
+  "margin-left": 0,
+  "margin-bottom": 0,
+  "margin-right": 0,
+  "margin-top": 0,
+
+  "spacing": 1, // Gaps between modules (4px)
+
+  "modules-left": [
+      "niri/window"
+      //"mpd"
+    //   "custom/media",
+    //   "custom/cava-internal"
+  ],
+  "modules-center": [
+      "custom/weather",
+      "clock#date",
+      "niri/workspaces"
+  ],
+  "modules-right": [
+      //"backlight",
+      //"custom/storage",
+      "memory",
+      "cpu",
+      "battery",
+      //"pulseaudio",
+      "wireplumber",
+      "niri/language",
+      "tray",
+    //   "custom/controls",
+      "custom/power"
+  ],
+
+
+  // -------------------------------------------------------------------------
+  // Modules
+  // -------------------------------------------------------------------------
+
+  "custom/sp1": {
+      "format": " | ",
+      "tooltip": false
+  },
+  "custom/sp2": {
+      "format": " |",
+      "tooltip": false
+  },
+
+
+  "custom/rofi": {
+      "format": " ",
+      "tooltip": false,
+      "on-click-right": "nwg-drawer",
+      "on-click": "wofi --show drun",
+      "on-click-middle": "pkill -9 wofi"
+  },
+  "custom/screenshot_t":{
+      "format":" ",
+      "tooltip": false,
+      "on-click": "~/.config/hypr/scripts/screenshot_full",
+      "on-click-right":"~/.config/hypr/scripts/screenshot_area"
+  },
+
+  "clock#1": {
+      "format": " {:%a}",
+      "tooltip": false,
+      "on-click": "gsimplecal"
+  },
+  "clock#2": {
+      "format": " {:%d-%h-%Y}",
+      "tooltip": false,
+      "on-click": "gsimplecal"
+  },
+  "clock#3": {
+      "format": " {:%H:%M:%S %p}",
+      "tooltip": false,
+      "on-click": "gsimplecal"
+  },
+
+  "clock": {
+      "format": "  {:%H:%M    %e %b}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "today-format": "<b>{}</b>"
+  },
+
+  "clock#date": {
+      //"format": "  {:%H:%M, %e %b}",
+      "format": " {:%I:%M %p, %d %B (%a)}",
+      "tooltip-format": "<tt><big>{calendar}</big></tt>",
+      "today-format": "<big>{}</big>",
+      "on-click": "gsimplecal"
+  },
+
+  "temperature": {
+      "interval": 4,
+      "critical-threshold": 80,
+      "format-critical": "  {temperatureC}°C",
+      "format": "{icon}  {temperatureC}°C",
+      "format-icons": ["", "", ""],
+      "max-length": 7,
+      "min-length": 7,
+      "on-click": "xsensors"
+  },
+
+  "memory": {
+      "interval": 3,
+      "format": " {used:0.2f} / {total:0.2f} GiB <span color=\"darkgray\">| {percentage}%</span>",
+      "tooltip-format": " Swap {swapUsed:0.2f} / {swapTotal:0.2f} GiB | {swapPercentage}%",
+      "on-click": "missioncenter"
+  },
+
+  "cpu": {
+    "interval": 1,
+    //"format": " {}%", // Icon: microchip
+    "format": " {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
+    "max-length": 16,
+    "min-length": 13,
+    "on-click": "missioncenter"
+  },
+
+  "battery": {
+      "interval": 2,
+      "states": {
+          "good": 95,
+          "warning": 30,
+          "critical": 15
+      },
+      "format": "{icon} {capacity}%",
+      "format-charging": " {capacity}%",
+      "format-plugged": " {capacity}%",
+      "format-icons": [
+          "",
+          "",
+          "",
+          "",
+          ""
+      ]
+  },
+  "network": {
+      "format-wifi": " {essid} ({signalStrength}%)",
+      "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format": "",
+      "format-disconnected": "",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}",
+      "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
+      "on-click-right": "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)",
+      "tooltip-format": " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n",
+      "tooltip-format-wifi": " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}",
+      "interval": 10
+  },
+  "custom/storage": {
+      "format": " {} left / 64G",
+      "format-alt": "{percentage}% ",
+      "format-alt-click": "click-right",
+      "return-type": "json",
+      "interval": 60,
+      "exec": "~/.config/waybar/modules/storage.sh"
+  },
+  "backlight": {
+      "device": "intel_backlight",
+      "format": "{icon} {percent}%",
+      "format-alt": "{percent}% {icon}",
+      "format-alt-click": "click-right",
+      //"format-icons": ["", ""],
+      "format-icons": ["", ""],
+      "on-scroll-down": "brightnessctl s 5%-",
+      "on-scroll-up": "brightnessctl s +5%"
+  },
+  "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+          "activated": "",
+          "deactivated": ""
+      },
+      "tooltip": "true"
+  },
+  "custom/weather": {
+      "format": "{}",
+      "format-alt": "{alt}: {}",
+      "format-alt-click": "click-right",
+      "interval": 3600,
+      "exec": "curl -s 'https://wttr.in/?format=1' | cut --delimiter ' ' -f 1,4",
+      //"return-type": "json",
+      //"exec": "~/.config/waybar/modules/weather.sh",
+      "exec-if": "ping wttr.in -c1",
+      "tooltip": false
+  },
+  "custom/pacman": {
+      "format": "<big>􏆲</big>  {}",
+      "interval": 3600,                     // every hour
+      "exec": "checkupdates | wc -l",       // # of updates
+      "exec-if": "exit 0",                  // always run; consider advanced run conditions
+      "on-click": "alacritty -e 'paru'; pkill -SIGRTMIN+8 waybar", // update system
+      "signal": 8,
+      "max-length": 5,
+      "min-length": 3
+  },
+
+  "custom/media": {
+      "format": " {icon} {}",
+      "return-type": "json",
+      "max-length": 50,
+      "escape": true,
+      "format-icons": " ",
+      "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+      // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+  },
+  // "custom/media": {
+  //     "format": "{icon}",
+  //     "return-type": "json",
+  //     "max-length": 80,
+  //     "format-icons": "🎜 ",
+  //     "escape": true,
+  //     "exec": "$HOME/.config/waybar/mediaplayer.py 3> /dev/null"
+  // },
+  
+  "custom/cava-internal": {
+      "format": " {}",
+      "exec": "cava -p ~/.config/cava/config1 | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'",
+      "tooltip":false
+  },
+
+  "custom/power": {
+      "format": "<span foreground='#ff6b6b'> </span>",
+      "tooltip": false,
+      "on-click": "wlogout"
+  },
+
+  "custom/gammastep": {
+    "interval": 5,
+    "return-type": "json",
+    "exec": {
+      "pre": "if unit_status=\"$(systemctl --user is-active gammastep)\"; then\nstatus=\"$unit_status ($(journalctl --user -u gammastep.service -g 'Period: ' | tail -1 | cut -d ':' -f6 | xargs))\"\nelse\nstatus=\"$unit_status\"\nfi",
+      "alt": "${status:-inactive}",
+      "tooltip": "Gammastep is $status"
+    },
+    "format": "{icon}",
+    "format-icons": {
+      "activating": "󰁪 ",
+      "deactivating": "󰁪 ",
+      "inactive": "? ",
+      "active (Night)": " ",
+      "active (Nighttime)": " ",
+      "active (Transition (Night)": " ",
+      "active (Transition (Nighttime)": " ",
+      "active (Day)": " ",
+      "active (Daytime)": " ",
+      "active (Transition (Day)": " ",
+      "active (Transition (Daytime)": " "
+    },
+    "on-click": "systemctl --user is-active gammastep && systemctl --user stop gammastep || systemctl --user start gammastep"
+  },
+
+  "custom/title": {
+      "format": "{}",
+      "interval": 0,
+      "return-type": "json",
+      //"max-length": 35,
+      "tooltip": false
+  },
+
+  "niri/language": {
+      "format": "<span foreground='#76e9a6'> {}</span>",
+      "format-en": "US",
+      "format-en-intl": "US INTL",
+    //   "format-": "US INTL", // Workaround while variants get fixed
+      "format-es": "ES",
+      "tooltip": false,
+      "on-click": "hyprctl switchxkblayout $(hyprctl devices | grep 'main: yes' -B 6 | head -n 1 | awk '{print $1}') next"
+  },
+
+  "custom/title#name": {
+      "format": "{}",
+      "interval": 0,
+      "return-type": "json",
+      "max-length": 35,
+      "exec": "$HOME/.scripts/title"
+  },
+
+  "niri/workspaces": {
+    "all-outputs": false,
+    "format": "{icon}",
+    "format-icons": {
+        "1": "1  ",
+        "2": "2  ",
+        "3": "3  ",
+        "4": "4  ",
+        "5": "5  ",
+        "6": "6  ",
+        "7": "7  ",
+        "8": "8  ",
+        "9": "9  ",
+        "10": "10  ",
+        "11": "1  ",
+        "12": "2  ",
+        "13": "3  ",
+        "14": "4  ",
+        "15": "5  ",
+        "16": "6  ",
+        "17": "7  ",
+        "18": "8  ",
+        "19": "9  ",
+        "20": "10  "
+    },
+    "on-scroll-up": "hyprctl dispatch split:workspace e+1 1>/dev/null",
+    "on-scroll-down": "hyprctl dispatch split:workspace e-1 1>/dev/null",
+    "sort-by-number": true,
+    "active-only": false
+  },
+
+  "custom/controls": {
+      "format": "",
+      "on-click": "hyprctl reload"
+  },
+
+  "niri/window": {
+      "max-length": 50,
+      "separate-outputs": true,
+      "format": " {title}"
+  },
+
+  "pulseaudio": {
+      "scroll-step": 3, // %, can be a float
+      //"format": "{icon} {volume}% {format_source}",
+      "format": "󰋎 {volume}% {format_source}",
+      "format-bluetooth": "{volume}% {icon} {format_source}",
+      "format-bluetooth-muted": " {icon} {format_source}",
+      "format-muted": "󰋎 {format_source}",
+      //"format-source": "{volume}% ",
+      //"format-source-muted": "",
+      "format-source": "",
+      "format-source-muted": "",
+      "format-icons": {
+          "headphone": "",
+          "hands-free": "",
+          "headset": "",
+          "phone": "",
+          "portable": "",
+          "car": "",
+          "default": ["", "", ""]
+      },
+      "on-click": "pavucontrol",
+      "on-click-right": "amixer sset Master toggle"
+  },
+
+  "wireplumber": {
+      "on-click": "pavucontrol",
+      "on-click-right": "amixer sset Master toggle 1>/dev/null",
+      //on-click: "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+      //on-scroll-down: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04+";
+      //on-scroll-up: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04-";
+      "format": "<span foreground='#fab387'>{icon}</span> {volume}%",
+      "format-muted": "<span foreground='#fab387'></span> shut up",
+      "format-source": "",
+      "format-source-muted": "",
+      //"format-muted": "<span foreground='#fab387'> </span>",
+      //"format-icons": [ "<span foreground='#fab387'></span>" ]
+      "format-icons": {
+          "headphone": "󰋎 ",
+          "hands-free": " ",
+          "headset": " ",
+          "phone": " ",
+          "portable": " ",
+          "car": " ",
+          "default": ["󰋎 ", "󰋎 ", "󰋎 "]
+      }
+  },
+
+  "tray": {
+      "icon-size": 13,
+      "spacing": 5
+  }
+}
