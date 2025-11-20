@@ -10,6 +10,15 @@ if ! [[ -e $HOME/Pictures/wallpapers/wallpaper1 ]]; then
     ln -s $WALLPAPER $HOME/Pictures/wallpapers/wallpaper2
 fi
 
+ICONS_DIR=$HOME/.local/share/icons
+TELA_ICONS=$ICONS_DIR/tela-icons.tar.gz
+
+echo "[Window Manager Setup] Setting up icons..."
+if ! [[ -e $TELA_ICONS ]]; then
+    tar -zxf $TELA_ICONS -C $ICONS_DIR
+    rm $TELA_ICONS
+fi
+
 echo "[Window Manager Setup] Setting up themes..."
 gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-mauve-standard+default
 gsettings set org.gnome.desktop.interface icon-theme Tela-dark
