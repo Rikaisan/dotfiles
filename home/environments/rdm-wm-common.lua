@@ -3,12 +3,12 @@ function RDM_AddModules()
     if IsSet("assets") then
         table.insert(extraModules, "wallpapers")
     end
-    return extraModules
+    return IsSet("extras") and extraModules or {}
 end
 
 function RDM_GetFiles()
     local returnedFiles = {
-        [""] = Directory("common"):exec("chwp") -- Since keys are relative to home, an empty string as the key means the root of the user home.
+        [""] = Directory("common"):exec("+(*.sh|chwp)") -- Since keys are relative to home, an empty string as the key means the root of the user home.
     }
 
     if IsSet("assets") then
