@@ -454,10 +454,8 @@ binds {
     Mod+WheelScrollUp          cooldown-ms=150 { focus-workspace-up; }
     Mod+WheelScrollRight       cooldown-ms=150 { focus-column-right; }
     Mod+WheelScrollLeft        cooldown-ms=150 { focus-column-left; }
-    Mod+Shift+WheelScrollDown  cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Shift+WheelScrollUp    cooldown-ms=150 { move-column-to-workspace-up; }
-    Mod+Shift+WheelScrollRight cooldown-ms=150 { move-column-right; }
-    Mod+Shift+WheelScrollLeft  cooldown-ms=150 { move-column-left; }
+    Mod+Shift+WheelScrollUp    cooldown-ms=150 { focus-column-left; }
+    Mod+Shift+WheelScrollDown  cooldown-ms=150 { focus-column-right; }
 
     // Similarly, you can bind touchpad scroll "ticks".
     // Touchpad scrolling is continuous, so for these binds it is split into
