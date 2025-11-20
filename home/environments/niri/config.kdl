@@ -3,9 +3,13 @@
 // Check the wiki for a full description of the configuration:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+// include "env.kdl"
+// include "monitors.kdl"
+// include "rules.kdl"
+// include "input.kdl"
+// include "autostart.kdl"
+// include "keymap.kdl"
+
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_QPA_PLATFORM "wayland;xcb"
@@ -15,6 +19,129 @@ environment {
     QT_STYLE_OVERRIDE "kvantum"
 }
 
+//~desktop
+output "DP-1" {
+    // off
+    mode "1920x1080@144.001"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    // off
+    mode "1920x1080@60.000"
+    scale 1
+    transform "normal"
+    position x=1920 y=0
+}
+
+workspace "main" {
+    open-on-output "DP-1"
+}
+
+workspace "steam" {
+    open-on-output "DP-1"
+}
+
+workspace "main-secondary" {
+    open-on-output "HDMI-A-1"
+}
+
+workspace "extras" {
+    open-on-output "HDMI-A-1"
+}
+
+window-rule {
+    match app-id="steam"
+    open-focused false
+    open-on-output "DP-1"
+    open-on-workspace "steam"
+}
+
+window-rule {
+    match app-id="^(org.keepassxc.KeePassXC)$"
+    match app-id="^(org.qbittorrent.qBittorrent)$"
+    match app-id="carla"
+    open-on-output "HDMI-A-1"
+    open-on-workspace "extras"
+    open-focused false
+}
+//~end-desktop
+//~laptop
+output "eDP-1" {
+    // off
+    mode "1920x1080@60.000"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}
+
+workspace "main" {
+    open-on-output "eDP-1"
+}
+
+workspace "steam" {
+    open-on-output "eDP-1"
+}
+
+workspace "extras" {
+    open-on-output "eDP-1"
+}
+
+window-rule {
+    match app-id="steam"
+    open-focused false
+    open-on-output "eDP-1"
+    open-on-workspace "steam"
+}
+
+window-rule {
+    match app-id="^(org.keepassxc.KeePassXC)$"
+    match app-id="^(org.qbittorrent.qBittorrent)$"
+    match app-id="carla"
+    open-on-output "eDP-1"
+    open-on-workspace "extras"
+    open-focused false
+}
+//~end-laptop
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="^(org.kde.polkit-kde-authentication-agent-1)$"
+    match app-id="^(org.gnome.polkit-gnome-authentication-agent-1)$"
+    open-floating true
+}
+
+window-rule {
+    match app-id="^(org.keepassxc.KeePassXC)$"
+    match app-id="^(org.gnome.World.Secrets)$"
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+// Autostart
+spawn-sh-at-startup "waybar -c ~/.config/waybar/niri.jsonc"
+spawn-sh-at-startup "carla ~/.config/rikai/carla-desktop.carxp"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "kdeconnect-indicator"
+spawn-at-startup "syncthing serve --no-browser"
+spawn-at-startup "wl-paste --type text --watch cliphist store"
+spawn-at-startup "wl-paste --type image --watch cliphist store"
+spawn-at-startup "hyprpaper"
+//spawn-at-startup "swaync"
+
+// Input device configuration.
+// Find the full list of options on the wiki:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     keyboard {
         xkb {
@@ -71,35 +198,9 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+    focus-follows-mouse
     // focus-follows-mouse max-scroll-amount="0%"
 }
-
-//~desktop
-output "DP-1" {
-    // off
-    mode "1920x1080@144.001"
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}
-
-output "HDMI-A-1" {
-    // off
-    mode "1920x1080@60.000"
-    scale 1
-    transform "normal"
-    position x=1920 y=0
-}
-//~end-desktop
-//~laptop
-output "eDP-1" {
-    // off
-    mode "1920x1080@60.000"
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}
-//~end-laptop
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -186,8 +287,9 @@ layout {
     border {
         // off
         width 1
+        active-color "#cba6f7"
         inactive-color "#464966"
-        active-gradient from="#cba6f7" to="#9aa8fe" angle=90
+        // active-gradient from="#cba6f7" to="#9aa8fe" angle=90
 
 
         // Color of the border around windows that request your attention.
@@ -244,8 +346,6 @@ layout {
     }
 }
 
-spawn-sh-at-startup "waybar -c ~/.config/waybar/niri.jsonc"
-spawn-at-startup "hyprpaper"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -271,48 +371,6 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
-}
-
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
-
-// Open the Firefox picture-in-picture player as floating by default.
-window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
-}
-
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
 }
 
 binds {
