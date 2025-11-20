@@ -8,6 +8,11 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_DISABLE_WINDOWDECORATION "1"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    QT_STYLE_OVERRIDE "kvantum"
 }
 
 input {
