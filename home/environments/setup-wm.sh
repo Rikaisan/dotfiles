@@ -1,23 +1,23 @@
 #!/bin/bash
 
-echo "[HYPRLAND] Setting up Hyprland..."
+echo "[Window Manager Setup] Setting up common elements..."
 
 WALLPAPER=$HOME/Pictures/wallpapers/purple_stare.png
 
-echo "[HYPRLAND] Setting up Hyprland wallpapers..."
+echo "[Window Manager Setup] Setting up wallpapers..."
 if ! [[ -e $HOME/Pictures/wallpapers/wallpaper1 ]]; then
     ln -s $WALLPAPER $HOME/Pictures/wallpapers/wallpaper1
     ln -s $WALLPAPER $HOME/Pictures/wallpapers/wallpaper2
 fi
 
-echo "[HYPRLAND] Setting up Theme..."
+echo "[Window Manager Setup] Setting up themes..."
 gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-mauve-standard+default
 gsettings set org.gnome.desktop.interface icon-theme Tela-dark
 
 read -p "Do you want to install/replace the SDDM theme config? [y/N] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]] then
-echo "[HYPRLAND] Setting up SDDM..."
+echo "[Window Manager Setup] Setting up SDDM..."
 sudo systemctl enable sddm.service
 sudo mkdir -p /etc/sddm.conf.d/
 sudo bash -c "echo \"[General]

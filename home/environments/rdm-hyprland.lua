@@ -3,24 +3,21 @@ local function removeSection(text, tag)
 end
 
 function RDM_AddModules()
-    local extraModules = { "fonts", "term", "waybar", "wofi" }
-    if IsSet("assets") then
-        table.insert(extraModules, "wallpapers")
-    end
+    local extraModules = { "wm-common" }
     return IsSet("extras") and extraModules or {}
 end
 
 function RDM_GetFiles()
     local returnedFiles = {
-        [""] = Directory("static"):exec("+(*.sh|chwp)") -- Since keys are relative to home, an empty string as the key means the root of the user home.
+        [".config"] = Directory("hyprland/static"):exec("*.sh")
     }
 
     if IsSet("assets") then
-        returnedFiles[".local/share/icons"] = Directory("custom/local/share/icons")
+        returnedFiles[".config/hypr"] = Directory("hyprland/assets")
     end
 
     local function addCustomHyprConfig(path, executable)
-        local cfg = Read("custom/config/hypr/" .. path)
+        local cfg = Read("hyprland/custom/" .. path)
         cfg = removeSection(cfg, FlagIsSet("laptop") and "desktop" or "laptop")
         cfg = removeSection(cfg, FlagIsSet("es") and "en" or "es")
         if executable then
@@ -40,8 +37,3 @@ function RDM_GetFiles()
     return returnedFiles
 end
 
-function RDM_Delayed()
-    if not IsPreview() and IsSet("setup") then
-        ForceSpawn("setup-hyprland.sh")
-    end
-end
