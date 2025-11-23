@@ -56,7 +56,7 @@ func_mkcd() {
 
 alias mkname='func_mkname'
 func_mkname() {
-    local file_name=$( echo "$*" | cut -d ' ' -f1- | tr '[:upper:]' '[:lower:]' | tr '-' ' ' | tr -d "[:punct:]" | tr ' ' '_' )
+    local file_name=$( echo "$*" | tr '[:upper:]' '[:lower:]' | tr '-' ' ' | tr -d "[:punct:]’" | tr ' ' '_' )
     mkdir -p $file_name && cd $file_name
 }
 
