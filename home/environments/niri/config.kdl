@@ -35,38 +35,6 @@ output "HDMI-A-1" {
     transform "normal"
     position x=1920 y=0
 }
-
-workspace "main" {
-    open-on-output "DP-1"
-}
-
-workspace "steam" {
-    open-on-output "DP-1"
-}
-
-workspace "main-secondary" {
-    open-on-output "HDMI-A-1"
-}
-
-workspace "extras" {
-    open-on-output "HDMI-A-1"
-}
-
-window-rule {
-    match app-id="steam"
-    open-focused false
-    open-on-output "DP-1"
-    open-on-workspace "steam"
-}
-
-window-rule {
-    match app-id="^(org.keepassxc.KeePassXC)$"
-    match app-id="^(org.qbittorrent.qBittorrent)$"
-    match app-id="carla"
-    open-on-output "HDMI-A-1"
-    open-on-workspace "extras"
-    open-focused false
-}
 //~end-desktop
 //~laptop
 output "eDP-1" {
@@ -76,35 +44,40 @@ output "eDP-1" {
     transform "normal"
     position x=0 y=0
 }
+//~end-laptop
 
 workspace "main" {
+    //~desktop
+    open-on-output "DP-1"
+    //~end-desktop
+    //~laptop
     open-on-output "eDP-1"
+    //~end-laptop
 }
 
 workspace "steam" {
+    //~desktop
+    open-on-output "DP-1"
+    //~end-desktop
+    //~laptop
     open-on-output "eDP-1"
+    //~end-laptop
 }
 
 workspace "extras" {
+    //~desktop
+    open-on-output "HDMI-A-1"
+    //~end-desktop
+    //~laptop
     open-on-output "eDP-1"
+    //~end-laptop
 }
 
-window-rule {
-    match app-id="steam"
-    open-focused false
-    open-on-output "eDP-1"
-    open-on-workspace "steam"
+//~desktop
+workspace "main-secondary" {
+    open-on-output "HDMI-A-1"
 }
-
-window-rule {
-    match app-id="^(org.keepassxc.KeePassXC)$"
-    match app-id="^(org.qbittorrent.qBittorrent)$"
-    match app-id="carla"
-    open-on-output "eDP-1"
-    open-on-workspace "extras"
-    open-focused false
-}
-//~end-laptop
+//~end-desktop
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
@@ -128,9 +101,37 @@ window-rule {
     default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 
+window-rule {
+    match app-id="steam"
+    open-focused false
+    //~desktop
+    open-on-output "DP-1"
+    //~end-desktop
+    //~laptop
+    open-on-output "eDP-1"
+    //~end-laptop
+    open-on-workspace "steam"
+}
+
+window-rule {
+    match app-id="^(org.keepassxc.KeePassXC)$"
+    match app-id="^(org.qbittorrent.qBittorrent)$"
+    match app-id="carla"
+    //~desktop
+    open-on-output "HDMI-A-1"
+    //~end-desktop
+    //~laptop
+    open-on-output "eDP-1"
+    //~end-laptop
+    open-on-workspace "extras"
+    open-focused false
+}
+
 // Autostart
-spawn-sh-at-startup "waybar -c ~/.config/waybar/niri.jsonc"
+//~desktop
 spawn-sh-at-startup "carla ~/.config/rikai/carla-desktop.carxp"
+//~end-desktop
+spawn-sh-at-startup "waybar -c ~/.config/waybar/niri.jsonc"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "kdeconnect-indicator"
 spawn-at-startup "syncthing serve --no-browser"
