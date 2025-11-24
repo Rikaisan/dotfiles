@@ -1,5 +1,5 @@
 local function removeSection(text, tag)
-    return text:gsub("#~" .. tag ..".*#~end%-" .. tag, "")
+    return text:gsub("#~" .. tag ..".-#~end%-" .. tag .. "", "")
 end
 
 function RDM_AddModules()
