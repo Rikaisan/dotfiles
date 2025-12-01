@@ -87,9 +87,12 @@ func_burnsubs() {
 
 alias seasonize=func_seasonize
 func_seasonize() {
-	local season=${1-1}
-	local season_string=S${season}E
-	for f in *; do mv -v $f ${f/* Episode /${season_string}}; done
+	python3 ~/.local/bin/rikai/seasonize.py
+}
+
+alias cleanani=func_cleanani
+func_cleanani() {
+	ls | grep .part | cut -d "." -f 1 | xargs -I _ sh -c "echo _ && rm _.vtt _.mp4.ytdl _.mp4.part"
 }
 
 alias fixrgba=func_fixrgba
