@@ -21,7 +21,7 @@ function RDM_GetFiles()
     }
 
     if IsSet("assets") then
-        returnedFiles[".local/share/icons"] = File("assets/tela-icons.tar.gz")
+        returnedFiles[".local/share/icons/tela-icons.tar.gz"] = File("assets/tela-icons.tar.gz")
     end
 
     return returnedFiles
