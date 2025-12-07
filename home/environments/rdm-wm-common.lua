@@ -1,9 +1,18 @@
 function RDM_AddModules()
-    local extraModules = { "fonts", "term", "waybar", "wofi" }
+    local requestedModules = {}
+
     if IsSet("assets") then
-        table.insert(extraModules, "wallpapers")
+        table.insert(requestedModules, "wallpapers")
     end
-    return IsSet("extras") and extraModules or {}
+
+    if IsSet("extras") then
+        local extraModules = { "fonts", "term", "waybar", "wofi" }
+        for _,item in ipairs(extraModules) do
+            table.insert(requestedModules, item)
+        end
+    end
+
+    return requestedModules
 end
 
 function RDM_GetFiles()
