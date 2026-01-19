@@ -112,3 +112,9 @@ func_touchc() {
 	echo "#pragma once\n" >> $1.h
 	echo "#include \"$1.h\"\n" >> $1.c
 }
+
+alias gitpack=func_gitpack
+func_gitpack() {
+	local name=$(pwd | rev | cut -d "/" -f 1 | rev)
+	git archive HEAD --prefix "$name/" > "$name.tar.gz"
+}
