@@ -103,8 +103,7 @@ func_fixrgba() {
 
 alias touchcpp=func_touchcpp
 func_touchcpp() {
-	echo "#pragma once\n" >> $1.hpp
-	echo "#include \"$1.hpp\"\n" >> $1.cpp
+	python3 ~/.local/bin/rikai/touchcpp.py
 }
 
 alias touchc=func_touchc
