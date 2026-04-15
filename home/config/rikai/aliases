@@ -103,7 +103,7 @@ func_fixrgba() {
 
 alias touchcpp=func_touchcpp
 func_touchcpp() {
-	python3 ~/.local/bin/rikai/touchcpp.py
+	python3 ~/.local/bin/rikai/touchcpp.py $*
 }
 
 alias touchc=func_touchc
