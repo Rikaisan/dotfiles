@@ -58,9 +58,10 @@ def get_namespace_lines(namespace: str, bare: bool=True) -> [str]:
 def get_class_lines(name: str, indent_level: int) -> [str]:
     lines = []
     indent = "\t" * indent_level
-    lines.append(f"{indent}class {name.capitalize()} {{\n")
+    name = name[0].upper() + name[1:]
+    lines.append(f"{indent}class {name} {{\n")
     lines.append(f"{indent}\tpublic:\n")
-    lines.append(f"{indent}\t{name.capitalize()}();\n")
+    lines.append(f"{indent}\t{name}();\n")
     lines.append(f"{indent}\tprotected:\n")
     lines.append(f"{indent}\tprivate:\n")
     lines.append(f"{indent}}};\n")
@@ -69,14 +70,16 @@ def get_class_lines(name: str, indent_level: int) -> [str]:
 def get_struct_lines(name: str, indent_level: int) -> [str]:
     lines = []
     indent = "\t" * indent_level
-    lines.append(f"{indent}struct {name.capitalize()} {{\n")
+    name = name[0].upper() + name[1:]
+    lines.append(f"{indent}struct {name} {{\n")
     lines.append(f"{indent}\t\n")
     lines.append(f"{indent}}};\n")
     return lines
 
 def get_constructor(name: str, indent_level: int) -> [str]:
     indent = "\t" * indent_level
-    return f'{indent}{name.capitalize()}::{name.capitalize()}() {{}}\n'
+    name = name[0].upper() + name[1:]
+    return f'{indent}{name}::{name}() {{}}\n'
 
 def create(settings: dict):
     if settings["dest"] and not os.path.exists(settings["dest"]):
@@ -85,8 +88,8 @@ def create(settings: dict):
     root = settings["dest"] or "."
 
     for bare in settings["bare"]:
-        impl_path = f"{root}/{bare}.cpp"
-        header_path = f"{root}/{bare}.hpp"
+        impl_path = f"{root}/{bare.lower()}.cpp"
+        header_path = f"{root}/{bare.lower()}.hpp"
         if os.path.exists(impl_path) or os.path.exists(header_path):
             print(f"Files already exist for {bare}, skipping...")
             continue
@@ -97,15 +100,15 @@ def create(settings: dict):
                 lines += get_namespace_lines(namespace)
             file.writelines(lines)
         with open(impl_path, "w") as file:
-            lines = [f'#include "{bare}.hpp"\n', "\n"]
+            lines = [f'#include "{bare.lower()}.hpp"\n', "\n"]
             if namespace:
                 lines += get_namespace_lines(namespace)
             file.writelines(lines)
         print(f"Created files for {bare}!")
 
     for klass in settings["class"]:
-        impl_path = f"{root}/{klass}.cpp"
-        header_path = f"{root}/{klass}.hpp"
+        impl_path = f"{root}/{klass.lower()}.cpp"
+        header_path = f"{root}/{klass.lower()}.hpp"
         if os.path.exists(impl_path) or os.path.exists(header_path):
             print(f"Files already exist for {klass}, skipping...")
             continue
@@ -121,7 +124,7 @@ def create(settings: dict):
                 lines += get_class_lines(klass, 0)
             file.writelines(lines)
         with open(impl_path, "w") as file:
-            lines = [f'#include "{klass}.hpp"\n', "\n"]
+            lines = [f'#include "{klass.lower()}.hpp"\n', "\n"]
             if namespace:
                 ns_lines = get_namespace_lines(namespace, False)
                 lines.append(ns_lines[0])
@@ -133,7 +136,7 @@ def create(settings: dict):
         print(f"Created files for {klass}!")
 
     for struct in settings["struct"]:
-        header_path = f"{root}/{struct}.hpp"
+        header_path = f"{root}/{struct.lower()}.hpp"
         if os.path.exists(header_path):
             print(f"Files already exist for {struct}, skipping...")
             continue
