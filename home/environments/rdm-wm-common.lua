@@ -12,6 +12,10 @@ function RDM_AddModules()
         end
     end
 
+    if IsSet("desktop") then
+        table.insert(requestedModules, "audio")
+    end
+
     return requestedModules
 end
 
