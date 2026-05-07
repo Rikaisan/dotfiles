@@ -1,0 +1,6 @@
+[sie][RNNoise#0]
+bypass=true
+vadThres=80
+
+[sie][RNNoise#1]
+vadThres=20

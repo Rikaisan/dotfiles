@@ -1,0 +1,25 @@
+[EffectsPipelines]
+processAllOutputs=false
+
+[NativePluginWindow]
+showNativePluginUi=true
+
+[Presets]
+lastLoadedInputPreset=FINAL AT2020
+
+[StreamInputs]
+inputDevice=alsa_input.usb-AT_AT2020USB-X_202011110001-00.mono-fallback
+mostUsedPresets=FINAL AT2020
+plugins=stereo_tools#0,compressor#1,expander#0,deepfilternet#0
+useDefaultInputDevice=false
+usedPresets=FINAL AT2020:2
+visiblePage=pluginsPage
+visiblePlugin=compressor#1
+
+[StreamOutputs]
+outputDevice=vac-main-audio
+
+[Window]
+height=1033
+visiblePage=inputPage
+width=1910
