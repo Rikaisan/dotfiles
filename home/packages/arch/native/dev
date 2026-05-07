@@ -1,5 +1,6 @@
 clang
 cmake
+code
 cpio
 docker
 docker-compose
