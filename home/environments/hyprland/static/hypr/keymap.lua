@@ -153,9 +153,9 @@ hl.define_submap("resize", function ()
 
     -- Extra binds
     hl.bind("C", hl.dsp.window.center())
-    hl.bind("R", hl.dsp.window.resize({ "monitor_w/2", "monitor_h/2" }))
+    hl.bind("R", hl.dsp.window.resize({ x = hl.get_active_monitor().width / 2, y = hl.get_active_monitor().height / 2 }))
     hl.bind("V", function()
-        hl.dispatch(hl.dsp.window.resize({ "monitor_w/2", "monitor_h/2" }))
+        hl.dispatch(hl.dsp.window.resize({ x = hl.get_active_monitor().width / 2, y = hl.get_active_monitor().height / 2 }))
         hl.dispatch(hl.dsp.window.center())
     end)
 
