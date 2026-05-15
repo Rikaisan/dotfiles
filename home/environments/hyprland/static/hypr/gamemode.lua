@@ -26,18 +26,18 @@ local function set_binds_state(value)
 end
 
 function ToggleGamemode()
-    is_active = not is_active
-    set_binds_state(not is_active)
-    hl.notification.create({ text = "Gamemode " .. (is_active and "ON" or "OFF"), time = 3000, icon = 1 })
+    if is_active then DisableGamemode() else EnableGamemode() end
 end
 
 function EnableGamemode()
+    if is_active then return end
     is_active = true
     set_binds_state(false)
     hl.notification.create({ text = "Gamemode ON", time = 3000, icon = 1 })
 end
 
 function DisableGamemode()
+    if not is_active then return end
     is_active = false
     set_binds_state(true)
     hl.notification.create({ text = "Gamemode OFF", time = 3000, icon = 1 })
