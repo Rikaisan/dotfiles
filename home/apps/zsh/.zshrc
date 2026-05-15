@@ -31,7 +31,3 @@ then
 fi
 
 source ~/.zshenv
-
-#~hypr
-bash ~/.config/hypr/scripts/post_install.sh
-#~end-hypr

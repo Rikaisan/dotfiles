@@ -8,13 +8,8 @@ function RDM_GetFiles()
         zshenv = removeSection(zshenv, "vivaldi")
     end
 
-    local zshrc = Read("zsh/.zshrc")
-    if not IsSet("hyprland") or not IsSet("setup") or IsSet("laptop") then
-        zshrc = removeSection(zshrc, "hypr")
-    end
-
     return {
-        [".zshrc"] = zshrc,
+        [".zshrc"] = Read("zsh/.zshrc"),
         [".zshenv"] = zshenv,
     }
 end
