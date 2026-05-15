@@ -39,21 +39,22 @@ PAINT = "wayscriber --active"
 ---- MY SCRIPTS ----
 --------------------
 
+-- os.execute is not async
 function ReloadBar()
-    hl.exec_cmd("killall waybar")
+    os.execute("killall waybar")
     hl.exec_cmd("waybar")
 end
 
 function ReloadWallpapers()
-    hl.exec_cmd("hyprctl hyprpaper unload all")
-    hl.exec_cmd("hyprctl hyprpaper preload \"" .. WP1 .. "\"")
+    os.execute("hyprctl hyprpaper unload all")
+    os.execute("hyprctl hyprpaper preload \"" .. WP1 .. "\"")
 
     if MACHINE == "desktop" then
-        hl.exec_cmd("hyprctl hyprpaper preload \"" .. WP2 .. "\"")
-        hl.exec_cmd("hyprctl hyprpaper wallpaper \"DP-1," .. WP1 .. "\"")
-        hl.exec_cmd("hyprctl hyprpaper wallpaper \"HDMI-A-1," .. WP2 .. "\"")
+        os.execute("hyprctl hyprpaper preload \"" .. WP2 .. "\"")
+        os.execute("hyprctl hyprpaper wallpaper \"DP-1," .. WP1 .. "\"")
+        os.execute("hyprctl hyprpaper wallpaper \"HDMI-A-1," .. WP2 .. "\"")
     else
-        hl.exec_cmd("hyprctl hyprpaper wallpaper \"eDP-1," .. WP1 .. "\"")
+        os.execute("hyprctl hyprpaper wallpaper \"eDP-1," .. WP1 .. "\"")
     end
 
     hl.notification.create({ text = "Reloaded wallpapers!", time = 3000, icon = 5 })

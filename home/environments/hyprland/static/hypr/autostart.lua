@@ -20,8 +20,6 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("wl-paste --type text --watch cliphist store") -- Stores only text data
     hl.exec_cmd("wl-paste --type image --watch cliphist store") -- Stores only image data
 
-    -- hl.exec_cmd("~/.config/hypr/scripts/autogamemode.sh")
-
     if MACHINE == "desktop" then
         hl.exec_cmd("keepassxc")
         hl.exec_cmd("openrgb --startminimized --profile \"Purple\"")
