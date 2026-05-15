@@ -40,7 +40,12 @@ hl.bind(mainMod .. " + ALT + F", hl.dsp.window.fullscreen_state({ internal = 2, 
 
 -- Debug
 hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(mainMod .. " + ALT + SHIFT + W", hl.dsp.exec_cmd("hyprctl activewindow > ~/.config/hypr/activewindow"))
+hl.bind(mainMod .. " + ALT + SHIFT + W", function ()
+    hl.exec_cmd("hyprctl activewindow > ~/.config/hypr/activewindow")
+    local win_class = hl.get_active_window().class
+    hl.notification.create({ text = "Window class copied to clipboard: " .. win_class, time = 3000, icon = 2 })
+    hl.exec_cmd("wl-copy \"" .. win_class .. "\"")
+end)
 
 -- Clipboard
 GM_bind(mainMod.. " + SHIFT + C", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
