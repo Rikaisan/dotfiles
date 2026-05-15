@@ -1,6 +1,8 @@
 local gamemode_binds = {}
 local is_active = false
 local gamemode_tag = "gamemode"
+local enable_notif = true
+local notif_time = 2000
 
 
 -- TODO: Get list from file and add keybinds to automatically add games
@@ -33,14 +35,14 @@ function EnableGamemode()
     if is_active then return end
     is_active = true
     set_binds_state(false)
-    hl.notification.create({ text = "Gamemode ON", time = 3000, icon = 1 })
+    if enable_notif then hl.notification.create({ text = "Gamemode ON", time = notif_time, icon = 1 }) end
 end
 
 function DisableGamemode()
     if not is_active then return end
     is_active = false
     set_binds_state(true)
-    hl.notification.create({ text = "Gamemode OFF", time = 3000, icon = 1 })
+    if enable_notif then hl.notification.create({ text = "Gamemode OFF", time = notif_time, icon = 1 }) end
 end
 
 function IsGamemodeActive()
