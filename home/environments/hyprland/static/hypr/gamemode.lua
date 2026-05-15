@@ -6,9 +6,9 @@ local gamemode_tag = "gamemode"
 -- TODO: Get list from file and add keybinds to automatically add games
 -- Window class of games to enable gamemode for
 GAMES = {
-    "steam_app_311210",
-    "steam_app_381210",
-    "dota2",
+    "steam_app_311210", -- Bo3
+    "steam_app_381210", -- DBD
+    "dota2", -- Dota 2
 }
 
 for _, game_class in ipairs(GAMES) do
@@ -56,7 +56,7 @@ hl.on("window.active", function (window)
     local found = false
 
     for _, tag in ipairs(window.tags) do
-        if tag == gamemode_tag then
+        if tag == gamemode_tag .. "*" then
             found = true
             break
         end
