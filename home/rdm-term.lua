@@ -1,3 +1,3 @@
 function RDM_AddModules()
-    return { "fish", "kitty", "starship", "bat", "neofetch", "yazi" }
+    return { "bin", "fish", "kitty", "bat", "neofetch", "yazi" }
 end

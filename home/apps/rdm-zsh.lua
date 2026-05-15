@@ -2,6 +2,10 @@ local function removeSection(text, tag)
     return text:gsub("#~" .. tag ..".-#~end%-" .. tag, "")
 end
 
+function RDM_AddModules()
+    return { "aliases", "starship" }
+end
+
 function RDM_GetFiles()
     local zshenv = Read("zsh/.zshenv")
     if not FlagIsSet("vivaldi") then
