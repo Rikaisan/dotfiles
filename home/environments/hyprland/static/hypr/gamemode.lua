@@ -52,6 +52,7 @@ function GetGamemodeTag()
 end
 
 hl.on("window.active", function (window)
+    if window == nil or window.tags == nil then DisableGamemode() return end
     local found = false
 
     for _, tag in ipairs(window.tags) do
