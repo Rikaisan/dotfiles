@@ -1,9 +1,9 @@
+#!/usr/bin/env bash
 alias ls="eza --icons=auto --color=auto"
 alias rls="/bin/ls"
 
 alias logs="docker ps --format '{{.Names}}' | fzf | docker logs -f"
 
-alias ytfzf="ytfzf -T kitty"
 alias dlmp3="yt-dlp -x --audio-format mp3"
 alias dlwav="yt-dlp -x --audio-format wav"
 alias dla="yt-dlp -x --audio-format"
@@ -15,9 +15,6 @@ func_download_ogg() {
     rm $file_name.mp3
 }
 
-alias cor="code -r"
-alias chr="code . -r"
-
 alias tmpd="cd $(mktemp -d)"
 
 alias watchlog='func_watchlog'
@@ -27,7 +24,7 @@ func_watchlog() {
 
 alias chwph='func_chwphyprland'
 func_chwphyprland() {
-    chwp $1 && $HOME/.config/hypr/scripts/reload_wallpapers.sh
+    chwp $1 && hyprctl dispatch ReloadWallpapers
 }
 
 alias loadnvm="source /usr/share/nvm/init-nvm.sh"
@@ -85,11 +82,6 @@ func_burnsubs() {
 	ffmpeg -i $1 -vf "subtitles='$1'" $outname
 }
 
-alias seasonize=func_seasonize
-func_seasonize() {
-	python3 ~/.local/bin/rikai/seasonize.py
-}
-
 alias cleanani=func_cleanani
 func_cleanani() {
 	ls | grep .part | cut -d "." -f 1 | xargs -I _ sh -c "echo _ && rm _.vtt _.mp4.ytdl _.mp4.part"
@@ -99,11 +91,6 @@ alias fixrgba=func_fixrgba
 func_fixrgba() {
 	mv "$1" "$1.old"
 	magick "$1.old" -channel rgba -fx "u*a" "$1"
-}
-
-alias touchcpp=func_touchcpp
-func_touchcpp() {
-	python3 ~/.local/bin/rikai/touchcpp.py $*
 }
 
 alias touchc=func_touchc
