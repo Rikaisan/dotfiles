@@ -6,16 +6,18 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Game Mode
 
-require("gamemode")
-hl.bind(mainMod .. " + G",  ToggleGamemode)
+local gm = require("gamemode")
+hl.bind(mainMod .. " + G",  gm.toggle) -- Enable/Disable gamemode
+hl.bind(mainMod .. " + SHIFT + G",  gm.add_focused_game) -- Adds the focused window to the permanent list of games
+hl.bind(mainMod .. " + ALT + G",  gm.tag_focused_window) -- Manually reload the game list
 
 -- End Game Mode
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 -- Apps
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(TERMINAL))
-GM_bind(mainMod .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
-GM_bind(mainMod .. " + D", hl.dsp.exec_cmd(MENU))
+gm.bind(mainMod .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
+gm.bind(mainMod .. " + D", hl.dsp.exec_cmd(MENU))
 hl.bind(mainMod .. " + period", hl.dsp.exec_cmd(EMOJI_MENU))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(NOTIFICATIONS))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd(PAINT))
@@ -23,8 +25,8 @@ hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(LOCK))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(LOGOUT))
 
 -- Custom Scripts
-GM_bind(mainMod .. " + B", ReloadBar)
-GM_bind(mainMod .. " + W", ReloadWallpapers)
+gm.bind(mainMod .. " + B", ReloadBar)
+gm.bind(mainMod .. " + W", ReloadWallpapers)
 hl.bind(mainMod .. " + P", PinFocus)
 
 -- Control
@@ -32,8 +34,8 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + K", hl.dsp.window.kill())
 hl.bind(mainMod .. " + ALT + SHIFT + delete", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("rotatesplit"))
-GM_bind(mainMod .. " + C", hl.dsp.window.center())
-GM_bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+gm.bind(mainMod .. " + C", hl.dsp.window.center())
+gm.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen_state({ internal = 0, client = 2, action = "toggle" }))
 hl.bind(mainMod .. " + ALT + F", hl.dsp.window.fullscreen_state({ internal = 2, client = 0, action = "toggle" }))
@@ -48,7 +50,7 @@ hl.bind(mainMod .. " + ALT + SHIFT + W", function ()
 end)
 
 -- Clipboard
-GM_bind(mainMod.. " + SHIFT + C", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
+gm.bind(mainMod.. " + SHIFT + C", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
 
 hl.bind("print", ExecWithNotif("grimblast --freeze copy area", "Screenshot copied!", 5000, 5))
 hl.bind("ALT + print", ExecWithNotif("grimblast --freeze save area", "Screenshot saved!", 5000, 5))
@@ -99,8 +101,8 @@ local special_workspaces = {
 }
 
 for name, key in pairs(special_workspaces) do
-    GM_bind(mainMod .. " + " .. key, hl.dsp.workspace.toggle_special(name))
-    GM_bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = "special:" .. name }))
+    gm.bind(mainMod .. " + " .. key, hl.dsp.workspace.toggle_special(name))
+    gm.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = "special:" .. name }))
 end
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
@@ -130,7 +132,7 @@ hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioStop",  hl.dsp.exec_cmd("playerctl stop"),       { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
-GM_bind(mainMod .. " + R", function ()
+gm.bind(mainMod .. " + R", function ()
     hl.dispatch(hl.dsp.submap("resize"))
     hl.notification.create({ text = "Entered manipulation mode, use ESC to exit", time = 3000, icon = 2 })
 end)
