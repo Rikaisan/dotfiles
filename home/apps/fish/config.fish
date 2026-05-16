@@ -3,7 +3,7 @@ if status is-interactive
     set -gx BROWSER zen-browser
     set -gx EDITOR nvim
     set -gx MOZ_ENABLE_WAYLAND 1
-    set PATH $PATH $HOME/.deno/bin $HOME/.cargo/bin $HOME/.local/bin $HOME/.local/bin/rikai /usr/local/bin
+    set PATH $HOME/.local/bin/rikai $PATH $HOME/.deno/bin $HOME/.cargo/bin $HOME/.local/bin /usr/local/bin
 
     # CONFIGS
     fish_config theme choose catppuccin-mocha
