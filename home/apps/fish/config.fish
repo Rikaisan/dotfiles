@@ -1,10 +1,7 @@
 if status is-interactive
     # VARS
-    set -gx BROWSER zen-browser
     set -gx EDITOR nvim
-    set -gx MOZ_ENABLE_WAYLAND 1
     set PATH $HOME/.local/bin/rikai $PATH $HOME/.deno/bin $HOME/.cargo/bin $HOME/.local/bin /usr/local/bin
-    set -gx JAVA_HOME /usr/lib/jvm/default-runtime
 
     # CONFIGS
     fish_config theme choose catppuccin-mocha

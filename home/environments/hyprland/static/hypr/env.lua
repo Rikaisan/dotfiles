@@ -19,3 +19,9 @@ hl.env("GRIMBLAST_EDITOR", "swappy -f")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
+
+hl.env("XDG_SESSION_DESKTOP", "Hyprland")
+
+hl.env("BROWSER", "zen-browser")
+hl.env("MOZ_ENABLE_WAYLAND", "1")
+hl.env("JAVA_HOME", "/usr/lib/jvm/default-runtime")
