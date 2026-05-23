@@ -17,7 +17,7 @@ if status is-interactive
 
     # OTHER
     # Disable Caps Lock
-    if test $XDG_SESSION_TYPE = "x11"
+    if test "$XDG_SESSION_TYPE" = "x11"
         setxkbmap -option ctrl:nocaps
     end
 end
