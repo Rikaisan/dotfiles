@@ -3,6 +3,8 @@ if status is-interactive
     set -gx EDITOR nvim
     set PATH $HOME/.local/bin/rikai $PATH $HOME/.deno/bin $HOME/.cargo/bin $HOME/.local/bin /usr/local/bin
 
+    alias mv="mv -vn"
+
     # CONFIGS
     fish_config theme choose catppuccin-mocha
 
