@@ -25,6 +25,7 @@ function RDM_GetFiles()
     end
 
     addCustomHyprConfig("globals.lua")
+    addCustomHyprConfig("hyprpaper.conf")
 
     return returnedFiles
 end
