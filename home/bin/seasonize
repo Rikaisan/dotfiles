@@ -19,9 +19,9 @@ for name in os.listdir():
         else:
             season = user_season
         episode = episode_result.group(1)
-        extensions = ''.join(pathlib.Path(name).suffixes)
+        extension = name.split(".")[-1]
 
-        new_name = f"S{season}E{episode}{extensions}"
+        new_name = f"S{season}E{episode}.{extension}"
         if os.path.exists(new_name):
             print(f"Tried to rename '{name}' to '{new_name}' but it already exists, skipping...")
         else:
