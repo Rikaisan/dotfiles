@@ -1,5 +1,5 @@
 function RDM_AddModules()
-    return { "starship" }
+    return { "starship", "bin" }
 end
 
 function RDM_GetFiles()
