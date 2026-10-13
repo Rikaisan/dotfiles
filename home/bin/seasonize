@@ -3,15 +3,21 @@
 import re
 import pathlib
 import os
+import sys
 
 episode_regex = re.compile(r"Episode (\d+)")
 season_regex = re.compile(r"Season (\d+) ")
+
+user_season = sys.argv[1] if len(sys.argv) > 1 else None
 
 for name in os.listdir():
     episode_result = episode_regex.search(name)
     season_result = season_regex.search(name)
     if episode_result is not None:
-        season = season_result.group(1) if season_result is not None else '1'
+        if not user_season:
+            season = season_result.group(1) if season_result is not None else '1'
+        else:
+            season = user_season
         episode = episode_result.group(1)
         extensions = ''.join(pathlib.Path(name).suffixes)
 
