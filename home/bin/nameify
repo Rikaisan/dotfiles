@@ -15,12 +15,15 @@ def nameify(name) -> str:
     return name
 
 if __name__ == "__main__":
-    if len(sys.argv) <= 1:
-        print("Missing arguments")
+    if len(sys.argv) > 1:
+        parsed_name=""
 
-    parsed_name=""
+        for piece in sys.argv[1:]:
+            parsed_name += f"{piece} "
 
-    for piece in sys.argv[1:]:
-        parsed_name += f"{piece} "
-
-    print(nameify(parsed_name))
+        print(nameify(parsed_name))
+    else:
+        try:
+            print(nameify(input()))
+        except EOFError:
+            pass
