@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+import sys
+import string
+
+def nameify(name) -> str:
+    name = name.strip().lower()
+
+    for ch in string.punctuation:
+        name = name.replace(ch, "")
+
+    for ch in string.whitespace:
+        name = name.replace(ch, "_")
+
+    return name
+
+if __name__ == "__main__":
+    if len(sys.argv) <= 1:
+        print("Missing arguments")
+
+    parsed_name=""
+
+    for piece in sys.argv[1:]:
+        parsed_name += f"{piece} "
+
+    print(nameify(parsed_name))
