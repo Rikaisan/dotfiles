@@ -2,3 +2,5 @@ steam_app_311210
 Minecraft* 26.1
 steam_app_381210
 dota2
+steam_app_1623730
+ffxiv_dx11.exe
