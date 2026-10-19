@@ -5,8 +5,9 @@ import string
 
 def nameify(name) -> str:
     name = name.strip().lower()
+    punctuation = string.punctuation + "“”「」『』"
 
-    for ch in string.punctuation:
+    for ch in punctuation:
         name = name.replace(ch, "")
 
     for ch in string.whitespace:
