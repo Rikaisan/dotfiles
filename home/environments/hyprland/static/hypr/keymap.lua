@@ -8,8 +8,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 local gm = require("gamemode")
 hl.bind(mainMod .. " + G",  gm.toggle) -- Enable/Disable gamemode
-hl.bind(mainMod .. " + SHIFT + G",  gm.add_focused_game) -- Adds the focused window to the permanent list of games
-hl.bind(mainMod .. " + ALT + G",  gm.tag_focused_window) -- Manually tag a window
+hl.bind(mainMod .. " + ALT + G",  gm.add_focused_game) -- Adds the focused window to the permanent list of games
 hl.bind(mainMod .. " + ALT + SHIFT + G",  gm.untag_focused_window) -- Manually untag a window
 hl.bind(mainMod .. " + CTRL + G",  gm.reload) -- Manually reload the game list
 
