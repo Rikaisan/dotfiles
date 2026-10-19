@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+function getdatadir() {
+	local data_home="$XDG_DATA_HOME"
+	data_home=${data_home:-"$HOME/.local/share"}/presetty
+	mkdir -p "$data_home"
+	echo "$data_home"
+}
+
+function apply_preset() {
+	local src="$1"
+	local dest="$2"
+	local msg="$3"
+
+	if [[ -e "$dest" ]]; then
+		echo "Destination '$dest' already exists."
+		exit 3
+	fi
+
+	cp -r "$src" "$dest"
+	echo "$msg '$NAME' from preset '$PRESET'!"
+}
+
+if [[ "${#@}" != "2" ]]; then
+	echo "Usage: presetty <preset> <target_name>"
+	exit 1
+fi
+
+DATA_DIR="$(getdatadir)"
+PRESET="$1"
+NAME="$2"
+PRESET_PATH="$DATA_DIR/$PRESET"
+
+if ! [[ -e "$PRESET_PATH" ]]; then
+	echo "Preset '$PRESET' doesn't exist"
+	exit 2
+fi
+
+if [[ -d "$PRESET_PATH" ]]; then
+	apply_preset "$PRESET_PATH" "$(pwd)/$NAME" "Created directory"
+	exit 0
+fi
+
+if [[ -f "$PRESET_PATH" ]]; then
+	apply_preset "$PRESET_PATH" "$(pwd)/$NAME" "Created file"
+	exit 0
+fi
