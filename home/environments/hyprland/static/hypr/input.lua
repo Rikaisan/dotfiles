@@ -23,6 +23,11 @@ hl.config({
     },
 })
 
+hl.device({
+    name = "wacom-intuos-s-2-pen",
+    output = MACHINE == "desktop" and "DP-1" or "eDP-1"
+})
+
 hl.gesture({
     fingers = 3,
     direction = "horizontal",
