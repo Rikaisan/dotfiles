@@ -46,19 +46,19 @@ hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + ALT + SHIFT + W", function ()
     hl.exec_cmd("hyprctl activewindow > ~/.config/hypr/activewindow")
     local win_class = hl.get_active_window().class
-    hl.notification.create({ text = "Window class copied to clipboard: " .. win_class, time = 3000, icon = 2 })
+    hl.notification.create({ text = "Window class copied to clipboard: " .. win_class, time = 1000, icon = 2 })
     hl.exec_cmd("wl-copy \"" .. win_class .. "\"")
 end)
 
 -- Clipboard
 gm.bind(mainMod.. " + SHIFT + C", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
 
-hl.bind("print", ExecWithNotif("grimblast --freeze copy area", "Screenshot copied!", 5000, 5))
-hl.bind("ALT + print", ExecWithNotif("grimblast --freeze save area", "Screenshot saved!", 5000, 5))
+hl.bind("print", ExecWithNotif("grimblast --freeze copy area", "Screenshot copied!", 1000, 5))
+hl.bind("ALT + print", ExecWithNotif("grimblast --freeze save area", "Screenshot saved!", 1000, 5))
 hl.bind("CTRL + print", hl.dsp.exec_cmd("grimblast --freeze edit area"))
 hl.bind("CTRL + SHIFT + print", hl.dsp.exec_cmd("grimblast --freeze edit output"))
-hl.bind("SHIFT + print", ExecWithNotif("grimblast --freeze copy output", "Screenshot copied!", 5000, 5))
-hl.bind("ALT + SHIFT + print", ExecWithNotif("grimblast --freeze save output", "Screenshot saved!", 5000, 5))
+hl.bind("SHIFT + print", ExecWithNotif("grimblast --freeze copy output", "Screenshot copied!", 1000, 5))
+hl.bind("ALT + SHIFT + print", ExecWithNotif("grimblast --freeze save output", "Screenshot saved!", 1000, 5))
 
 -- Move focus with mainMod + arrow keys
 for _, dir in ipairs({ "left", "right", "up", "down" }) do
@@ -135,7 +135,7 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 
 gm.bind(mainMod .. " + R", function ()
     hl.dispatch(hl.dsp.submap("resize"))
-    hl.notification.create({ text = "Entered manipulation mode, use ESC to exit", time = 3000, icon = 2 })
+    hl.notification.create({ text = "Entered manipulation mode, use ESC to exit", time = 1000, icon = 2 })
 end)
 
 hl.define_submap("resize", function ()
@@ -176,7 +176,7 @@ hl.define_submap("resize", function ()
     -- use to go back to the global submap
     local function exit_resize()
         hl.dispatch(hl.dsp.submap("reset"))
-        hl.notification.create({ text = "Exited manipulation mode", time = 3000, icon = 2 })
+        hl.notification.create({ text = "Exited manipulation mode", time = 1000, icon = 2 })
     end
 
     hl.bind("escape", exit_resize)
